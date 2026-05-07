@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>WAAFA | Digital Couture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f9",
+                        "inverse-primary": "#ffb2b9",
+                        "on-surface": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#6c3833",
+                        "secondary-fixed": "#dee1fa",
+                        "primary": "#b60f40",
+                        "surface-tint": "#ba1342",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#d93057",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary-fixed-variant": "#91002f",
+                        "secondary-container": "#dbdef8",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface-variant": "#5a4042",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#42465a",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-dim": "#dadada",
+                        "secondary": "#5a5d73",
+                        "on-tertiary-fixed": "#360e0b",
+                        "on-secondary-container": "#5e6177",
+                        "primary-fixed": "#ffdadc",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#e2bec0",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "background": "#f9f9f9",
+                        "tertiary": "#854c47",
+                        "tertiary-fixed": "#ffdad6",
+                        "outline": "#8e6f72",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-container": "#a1645e",
+                        "secondary-fixed-dim": "#c2c5de",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed": "#161b2d",
+                        "on-background": "#1a1c1c",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fffbff",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed": "#400010",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#feb4ac"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1.5rem",
+                        "section-gap": "8rem",
+                        "margin-x": "5vw",
+                        "gutter": "2rem",
+                        "stack-lg": "3rem",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Noto Serif"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "display-xl": ["Noto Serif"],
+                        "headline-lg": ["Noto Serif"],
+                        "label-caps": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full flex justify-between items-center px-[5vw] py-6 max-w-[1920px] mx-auto bg-white/80 dark:bg-zinc-950/80 backdrop-blur-[20px] z-50 shadow-none border-b border-zinc-100 dark:border-zinc-800">
+<!-- Logo -->
+<a class="text-2xl font-serif tracking-[0.2em] text-[#ED4064] dark:text-[#ED4064] font-bold uppercase hover:opacity-70 transition-opacity duration-300" href="#" style="">WAAFA</a>
+<!-- Navigation Links (Web) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-serif tracking-tight text-zinc-900 dark:text-zinc-50 uppercase text-xs tracking-[0.15em] text-zinc-600 dark:text-zinc-400 hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">Collections</a>
+<a class="font-serif tracking-tight text-zinc-900 dark:text-zinc-50 uppercase text-xs tracking-[0.15em] text-zinc-600 dark:text-zinc-400 hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">New Arrivals</a>
+<a class="font-serif tracking-tight text-zinc-900 dark:text-zinc-50 uppercase text-xs tracking-[0.15em] text-zinc-600 dark:text-zinc-400 hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">Evening Gowns</a>
+<a class="font-serif tracking-tight text-zinc-900 dark:text-zinc-50 uppercase text-xs tracking-[0.15em] text-zinc-600 dark:text-zinc-400 hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">Heritage</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-6">
+<button class="text-[#ED4064] dark:text-[#ED4064] hover:opacity-70 transition-opacity duration-300" style="">
+<span class="material-symbols-outlined" data-icon="person" style="">person</span>
+</button>
+<button class="text-[#ED4064] dark:text-[#ED4064] hover:opacity-70 transition-opacity duration-300" style="">
+<span class="material-symbols-outlined" data-icon="shopping_bag" style="">shopping_bag</span>
+</button>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-[#ED4064] dark:text-[#ED4064] hover:opacity-70 transition-opacity duration-300" style="">
+<span class="material-symbols-outlined" data-icon="menu" style="">menu</span>
+</button>
+</div>
+</header>
+<main class="pt-[88px]">
+<!-- Hero Section -->
+<section class="relative w-full h-[921px] min-h-[600px] flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 w-full h-full">
+<img alt="Cinematic shot of a woman in a stunning flowing magenta evening gown standing on an elegant marble staircase with soft dramatic studio lighting" class="w-full h-full object-cover object-center" data-alt="Cinematic shot of a woman in a stunning flowing magenta evening gown standing on an elegant marble staircase with soft dramatic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaB6Zz8sH_GQdtePqmNj-9gdDvuiC2IMDid2iJcCLizkxR5edp0BZhOyeU5PkwpGJSNdxsXpKj8ysqb5aHHgWc50gPrum72KjJ7ivSDrt0KPZG7-HR0Tk-vzwUH3Qjmb5qmzL5goucqoSaDOHSYNFXLKd422kwqf9swwxlZK_yHPdwuTFWd-Rbz0i0J1yePFc-t6m0zF3RboSyygp9EBHaLNZARKnwgI07RXtepDOfy63RNfzJyrEhX1-Bc1zRzrWPfyz7BCj3020" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 text-center px-margin-x max-w-container-max mx-auto flex flex-col items-center">
+<h1 class="font-display-xl text-display-xl text-white mb-stack-md drop-shadow-lg" style="">The Art of Elegance</h1>
+<p class="font-body-lg text-body-lg text-white/90 mb-stack-lg max-w-2xl drop-shadow-md" style="">Discover our latest collection of handcrafted gowns, where minimal silhouette meets striking vibrant detail.</p>
+<a class="inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest hover:bg-primary-container transition-colors duration-300" href="#" style="">
+                    Explore Collection
+                </a>
+</div>
+</section>
+<!-- Category Grid -->
+<section class="py-section-gap px-margin-x max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter h-[600px]">
+<!-- Tile 1 -->
+<a class="group relative overflow-hidden flex items-end p-8 bg-surface-container-low h-full rounded-full" href="#" style="">
+<img alt="Light airy summer floral dress with soft pastel tones billowing in a gentle breeze outdoors" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Light airy summer floral dress with soft pastel tones billowing in a gentle breeze outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb3s_GRuquaX2AFMrZQOnlhaX77hUo3SeCDd0NuTqJUTCqEQlO5JKpsPsXzCqsMkgkiwtGfxyJAVPR6IfZ1E6v-yROcnmDOm-ndMBWJdrb6eeHJmPTasXlyXHstHDqsbuKcA3aHHQyusFyh6Vu5461vuYFX0An7GA4TmwFy031zx377ydEczw-O8-4Y99WN76R_IQ1FJBu45eur6CZ6ERjVPiYNQBjIS6r0zF_qxE7v4DuL0SvxIpJFqCb2dQRNe_Jjchlc1e548E" style="">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+<div class="relative z-10 w-full text-center">
+<h2 class="font-headline-md text-headline-md text-white mb-2" style="">Summer Florals</h2>
+<span class="inline-block font-label-caps text-label-caps text-white border-b border-white pb-1 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" style="">Shop Now</span>
+</div>
+</a>
+<!-- Tile 2 -->
+<a class="group relative overflow-hidden flex items-end p-8 bg-surface-container-low h-full rounded-full" href="#" style="">
+<img alt="Close up of luxurious silk evening gown fabric catching studio light reflecting deep rich magenta tones" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of luxurious silk evening gown fabric catching studio light reflecting deep rich magenta tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5vl1GhJBQ9h3J4-tuztm9APOnlk6Z3-P5obDc_cMnuFd3fProKZ1TOK2-gRfodAlXhu_DV7RSUhhKKT6zX3L-weB8dlW4Rm34E3MajVAKOwE_CmnuaonIwBjI20yn8hXshLcZEUCgm9FBhfeLNM4LNvhTuYrdmrCkiGGMB95H4LM44QNpQW-t5wvy_vW1Cy5tsx1On5Krd25Y8ffD11gJKJLIe2d0e8r3ylgTLcz9eIVJCvaSeaaSmPqCn4fE8WGKYOKBOUGc8hs" style="">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+<div class="relative z-10 w-full text-center">
+<h2 class="font-headline-md text-headline-md text-white mb-2" style="">Evening Couture</h2>
+<span class="inline-block font-label-caps text-label-caps text-white border-b border-white pb-1 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" style="">Shop Now</span>
+</div>
+</a>
+<!-- Tile 3 -->
+<a class="group relative overflow-hidden flex items-end p-8 bg-surface-container-low h-full rounded-full" href="#" style="">
+<img alt="Elegant minimal white bridal gown with delicate lace detailing on a mannequin in a sunlit atelier" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Elegant minimal white bridal gown with delicate lace detailing on a mannequin in a sunlit atelier" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANAMuxUYDD6Upvtmnsr6N81_bBEKHtcDfK8AiVUBQFOE4cbVHKwPu7KyAohSW8idM6SrodZh7A9X4_-hSLUUyTuz8wPQWLXGt1_zMQ7TKSTHuLjJat9ZUryEtqWphfOFZVo6-ieb5F0FWOXRRUnsAN5ski5Yhdr1Vqaak9AFB5XF2exRsEsgAaYJ8rjFproko_mWGwLaFNYpCXv2W8qoN83rbvBPIlolkCz29l9nFHbbtE5gZi5IRm8vSBeY9J7atHQjz6dgplCYI" style="">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+<div class="relative z-10 w-full text-center">
+<h2 class="font-headline-md text-headline-md text-white mb-2" style="">The Bridal Edit</h2>
+<span class="inline-block font-label-caps text-label-caps text-white border-b border-white pb-1 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" style="">Shop Now</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Featured Collection -->
+<section class="py-section-gap bg-surface-bright">
+<div class="px-margin-x max-w-container-max mx-auto mb-12 flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2" style="">Featured Collection</h2>
+<p class="font-body-md text-body-md text-on-surface-variant" style="">Curated silhouettes for the modern aesthete.</p>
+</div>
+<a class="hidden md:inline-flex font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-primary-container transition-colors duration-300" href="#" style="">View All</a>
+</div>
+<div class="px-margin-x max-w-container-max mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Product Card 1 -->
+<div class="group flex flex-col cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden mb-4 bg-surface-container-low">
+<img alt="Elegant deep magenta evening gown full length front view against a neutral gray studio background" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Elegant deep magenta evening gown full length front view against a neutral gray studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdqGvcqualg5XOoTOkN8nWEzwwzs1mofh-vn8HPQtug117IcnWAAWkr71xkmIDvXTogg5Rk5gnB6Vfo0C0piFUzCpte2wEm6W8imzo2Jd9UwSOE9OEfgl2mbstdBxhIwBKMGSitxUKqmNr5epU2QStTStZkksyzPJiTwTd2BLRStT_tvlZ7gpLY1obb3bdIuxiGwZ9zDf8t2izxF3AhLb9WnTe6O0syqGvXFVNuDQ-k7JfebiGBCR7LUaxvT8GHOxNzMGd0tvHer0" style="">
+<!-- Subtle primary color glow on hover -->
+<div class="absolute inset-0 opacity-0 group-hover:opacity-10 bg-primary transition-opacity duration-500 mix-blend-color"></div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-base text-on-surface mb-1" style="">The Crimson Cascade</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" style="">$1,250</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group flex flex-col cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden mb-4 bg-surface-container-low">
+<img alt="Minimalist silk slip dress in deep blush pink hanging on a delicate velvet hanger in soft natural light" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist silk slip dress in deep blush pink hanging on a delicate velvet hanger in soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6BWZFN3BnCd0myR7-kxJ48EXNzrET8ozYJ0ZuUroCZTiXwAbEROgdb0lhNd1cjZG5J6cXfQSdcEyY0TAvhvTkl-sd5pRdN8fkmcKoTe51XPbjrmEHCVwtxTHPeouLRWrwlg9Uof0rtuB-Bxqr0Q6BEVRPHRl8jlU5i-Ml590zUOXJ-7b9cM_N1EdLDEZzpQUmwz2boo6SiSd8behfZCF7LMT9o71WLrUBhhpbRmNpk4SVI4dDIVlkR7RcTzU7PrN7ck6gYyqsLcI" style="">
+<div class="absolute inset-0 opacity-0 group-hover:opacity-10 bg-primary transition-opacity duration-500 mix-blend-color"></div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-base text-on-surface mb-1" style="">Blush Silk Slip</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" style="">$890</p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group flex flex-col cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden mb-4 bg-surface-container-low">
+<img alt="Ethereal white tulle midi dress with delicate floral embroidery catching golden hour light" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Ethereal white tulle midi dress with delicate floral embroidery catching golden hour light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7nDJX43n_MyMV_VlNZjQSIQ8zMWx3nTM3pSZzBdh4o65zny__Rttub60LHoqM3-uV_tkTZ8hV94gRrLiB43_mzVNWqco5Uj2jLZxzNiCnLCLgpKaV0YeAHTvL3BsO0RbL1P3F2Y4dDAHKCPHgJ_sIRgQP84vIIjiu6dkQzoqRmKMeNnTIbEKXUM5JFHBdfPZqIYWRcLEDMHQHmdHoMNtedx4d_N_KBJ8RukvCnvSZPT1KBEbFaId2EwMNXsGdb2X6tpDFt2kyGCc" style="">
+<div class="absolute inset-0 opacity-0 group-hover:opacity-10 bg-primary transition-opacity duration-500 mix-blend-color"></div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-base text-on-surface mb-1" style="">Ethereal Tulle Midi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" style="">$1,450</p>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group flex flex-col cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden mb-4 bg-surface-container-low">
+<img alt="Structured architectural ivory column gown with an asymmetrical neckline worn by a model in a stark white gallery" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Structured architectural ivory column gown with an asymmetrical neckline worn by a model in a stark white gallery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD22gU8v4unGsDn4CEpMjpgShVlQbXwefXYUICLTHfvw8dCk_QatlgDQgITCITfWWii06hdhbX6-I3-DviG0Dybv_BCX0kLuPoCMGq8EIgFwQON-aNVF344TomMeMitjlu9kWa8lPCBBfDFziXd_haHlxCZAIb7oYU3ztOjq-GheGd185KtmYr4gS5ISGvtNHWOciH85PoUlijqfutxMledIHVz7kYvUYvKFgktGNrh4leDzoniVb8eHb3Ts118Ly3MsGbXu5O-m0s" style="">
+<div class="absolute inset-0 opacity-0 group-hover:opacity-10 bg-primary transition-opacity duration-500 mix-blend-color"></div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-base text-on-surface mb-1" style="">Architectural Column</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" style="">$1,800</p>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center md:hidden">
+<a class="inline-flex font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-primary-container transition-colors duration-300" href="#" style="">View All</a>
+</div>
+</div>
+</section>
+<!-- Brand Story Split Screen -->
+<section class="py-section-gap px-margin-x max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Image Side -->
+<div class="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0 lg:max-w-none">
+<!-- Glassmorphism decorative element -->
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-transparent blur-2xl -z-10 rounded-full"></div>
+<img alt="Artisan tailor's hands carefully stitching delicate beading onto luxurious magenta silk fabric in a bright atelier" class="w-full h-full object-cover shadow-2xl shadow-secondary/5" data-alt="Artisan tailor's hands carefully stitching delicate beading onto luxurious magenta silk fabric in a bright atelier" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWvqWeFtU2cmqOOx1DXnUaP-RNNKygrfQAS3h_9NbtzsSjMBDYfk10XCvIFnGNXmHZ06OsbxFKcihGgiyOcKrA2g8WQlI7EG6GZqLckkkmYa0cAgKdBts_ju6j6awJwfnKnMcbgW2Aon7CLdOpeyJr27gXn2zGPzNkz1SGewl6IAnWmJEjctfEx6pRIp57QHbUTKaVt1YOg-DHbCFxoDwvARESVyl97jik2w8uN6-kX8zxx7afTXO3cy_QGAcNi9SD_YmqXno38T4" style="">
+</div>
+<!-- Text Side -->
+<div class="flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-primary mb-4 tracking-widest uppercase" style="">The Atelier</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6" style="">Mastery in Every Stitch</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl" style="">
+                        At WAAFA, we believe that true luxury lies in the details. Each garment is meticulously crafted in our atelier, marrying traditional haute couture techniques with modern, architectural silhouettes. We source only the finest fabrics to ensure that "Elegance in each fabric" is not just a promise, but a tactile reality.
+                    </p>
+<div>
+<a class="inline-flex items-center justify-center px-8 py-4 border border-secondary text-on-surface font-label-caps text-label-caps uppercase tracking-widest hover:bg-surface-container-high transition-colors duration-300" href="#" style="">
+                            Discover Our Heritage
+                        </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Atelier Testimonials -->
+<section class="py-section-gap bg-surface-container-low px-margin-x">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-primary mb-4 tracking-widest uppercase block" style="">WAAFA Women</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface" style="">Atelier Testimonials</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Testimonial 1 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-6 ring-1 ring-outline-variant">
+<img alt="Sophia from Paris" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC8fpgJ3joCeCuJPFGTZAg9uMUKTYZYasG1Fa8Y7JwMCCCPnWDds-M8ODOtT6ClHJfBY6r4IxROp5sb8kGmSPWdvVo-kTJAAPRwhzLtq0qb6emhgZNnU0DhJ_Xj7nMXQYCVvjMF7wTMOTDWNTEHQIqkFp6uKoH4BE1PE7Ga3nymSNHUsQa1kCzzaNi0vFam1q6MGNNRCfDF5pxNtLNT5eq4WOgR4v1v_jVZLIb6BguTTvczrJA_nlStBX2Bd5fWDGipSRR1o3dpZc" style="">
+</div>
+<div class="flex gap-1 mb-4 text-[#ED4064]">
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+</div>
+<p class="font-serif text-lg text-on-surface mb-6 italic leading-relaxed" style="">"The crimson cascade gown I wore to the gala felt like a second skin. The attention to detail is truly unparalleled."</p>
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest" style="">Sophia</p>
+<p class="text-sm text-on-surface-variant font-body-sm mt-1" style="">Paris, France</p>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-6 ring-1 ring-outline-variant">
+<img alt="Elena from Milan" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsWY3asjwmaWHcfjHL08laDfBo6kAkLYOJlEdLVzM0AVaXCWoJeW9r5vZfyf5s4D5zL-S4-49wV_UDfAjZdLmKtea69D8H6E9YE4r1IxXK3ioxlJ2JGb2PZUbyd8H7_YJMUO00YPmULAwMVeWBIvtAXZNvtkREJ18nwL5XWepZj225wCWFfAZGUyL9hh7DE3l5IsSeZk-9kM1bhEu1sAFD80AavSzkbO27d4afSM95MwlaJTzjk48jjXknsW9OurEJ56J42TXyubk" style="">
+</div>
+<div class="flex gap-1 mb-4 text-[#ED4064]">
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+</div>
+<p class="font-serif text-lg text-on-surface mb-6 italic leading-relaxed" style="">"Finding a brand that marries architectural silhouettes with such fine fabrics is rare. WAAFA is my go-to for every event."</p>
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest" style="">Elena</p>
+<p class="text-sm text-on-surface-variant font-body-sm mt-1" style="">Milan, Italy</p>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-6 ring-1 ring-outline-variant">
+<img alt="Isabella from New York" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUb1LQEY9A-RAIxpQz3bgP7fRWhlySe8bSvPyDnAP8D99ejRJRhvXNdi5rpaO_kBMdVhd_ER44t8mHqQu7trJdlQ6tk4-mu9pPm3jf611kiACG5810douNk2eLbokesDEQGHCfrgdqL71wDANPRbtocpgPCXWz9sUFJ547wV9Ak8lqGpmVLekQgV2b4wX8o-7vbv44SIihiE8gc6VHLshiyhHE_kVaAGIxKR3QdHaoA1HACuUatdunwReKL0SgQqvT4RSAa0JHCg8" style="">
+</div>
+<div class="flex gap-1 mb-4 text-[#ED4064]">
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+<span class="material-symbols-outlined fill-icon text-sm" style="">star</span>
+</div>
+<p class="font-serif text-lg text-on-surface mb-6 italic leading-relaxed" style="">"Their bridal edit made my special day unforgettable. The minimalist slip dress was exactly what I had always dreamed of."</p>
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest" style="">Isabella</p>
+<p class="text-sm text-on-surface-variant font-body-sm mt-1" style="">New York, USA</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter & Community -->
+<section class="py-section-gap bg-surface text-center px-margin-x">
+<div class="max-w-2xl mx-auto mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4" style="">Join the WAAFA Circle</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8" style="">Subscribe for exclusive previews of our upcoming collections and intimate atelier notes.</p>
+<!-- Minimal Input -->
+<form class="flex flex-col sm:flex-row gap-4 items-end justify-center w-full max-w-md mx-auto">
+<div class="relative w-full">
+<label class="absolute -top-4 left-0 font-label-caps text-label-caps text-on-surface-variant text-[10px]" for="email" style="">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b border-surface-dim focus:border-primary focus:ring-0 px-0 py-2 font-body-md text-body-md text-on-surface placeholder:text-surface-dim transition-colors duration-300" id="email" placeholder="Enter your email" type="email">
+</div>
+<button class="shrink-0 font-label-caps text-label-caps text-primary hover:text-primary-container transition-colors duration-300 pb-2 border-b border-transparent hover:border-primary-container" type="submit" style="">
+                        Subscribe
+                    </button>
+</form>
+</div>
+<!-- Instagram Grid (Decorative) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-container-max mx-auto">
+<img alt="Detail shot of magenta dress fabric" class="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer" data-alt="Detail shot of magenta dress fabric catching light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIx0MZeztnckQ6mn6loA7h9SqB2Q6Bg_QB7EX3xIoB6pHRIiyMGrLK7a4eego3ascoTJx36w74k11KfaX64BEzyykAvE7zvO8kvN_oq7TPymL1pvZzk0IxP3Mg8lZFlz7E-l9nEKVv1e730vDFYwEQIv_mpk0SlwuZ6OkED5d82f3CJNqrfo7JT1Mu1orbMw5GdiLOomiTWPY_5GfrMphHUR-TyEtyIh7VdL_b65MZ3DOYEOG6wL8aATT_2Lg7wMgeWnMlNHCnTWs" style="">
+<img alt="Model wearing minimal slip dress" class="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer" data-alt="Model wearing minimal slip dress in soft light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC83bJkouMmmory91wX5Lm4gXWEpBGsGMJmd5XuQJ-YRFRVcU8xmXEYzHO2t9zZ67Agk3rCxPkANQ2mCm8tNee4oKj-eVuvVVzf7cYZdTZ1V2ItOIZQstG70buSnO4_E1i--nnnds7BFOcXCWlcNpD-p4rVgvale4n4i1jOQXcy-o9iCFWjm8OQnZPSPv0b2bERRgWBqMSAWks28K0ZCpMyZ6hca7jUiW2em-EdLLkG6ovvMl1C131iPmGhxrEkUSmpudFdaPFM5T4" style="">
+<img alt="Floral lace detail" class="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer" data-alt="Close up of delicate floral lace embroidery on white fabric" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMBbdRr0_6XJnGY53dMFLWmxD947BS9W4-0BI4NsiSfdRRjeSHffgEumyzSI9oDFoEfjvscC8HlasQUkejK7woLNg0nMljxJlHFUdq6cWjqqZSEKeY77HH7miyh_s7MEBPCHDUhO9K6o5olKoOzWBMRn7YqVc9Mnm7elsEMTBJI6oSeBuxhwsMR5yg_VIlM8cxMTlNkQIsN0iw-F2zUR2vWNKLTRJsd-z9DSxodE0VHaoDFESJzq4WcGh_aY1hHiBAHCo3g5zEacA" style="">
+<img alt="Architectural gown silhouette" class="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer" data-alt="Silhouette of an architectural ivory gown against a bright window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIqhRczNBvVB4k2KR1QEumflapJAMta-xdEs1iNqh8qOlGeV3DAYBrUuuSZ1QjJtmbvgFZFaYWXwX33C0bhf76_FZKFcZ1DS0U8VCkGqy8yUdMfcT2EeGjLr18YsiDsgO7TWwEo3eEF6YCuFWJOFCC19_J2d_49zI0iyPPxRvIg9rqeA3LFaVYf9B45iqr-2UPGCsnVp74_ZJBr1jCcA3e5-ihl1c1kp8sF9kzuiQl3RkmeFCT1Fe8ysLx2FbRvdn9AG_XV70Qp4c" style="">
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-8 uppercase tracking-widest" style="">#WAAFAladies</p>
+</section>
+</main>
+<!-- Footer -->
+<footer class="relative w-full py-20 px-[5vw] bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 max-w-[1920px] mx-auto">
+<!-- Brand & Copyright -->
+<div class="md:col-span-4 flex flex-col justify-between">
+<span class="text-3xl font-serif tracking-[0.3em] text-[#ED4064] mb-8 block uppercase font-bold" style="">WAAFA</span>
+<p class="font-serif text-zinc-800 dark:text-zinc-200 uppercase tracking-widest text-[10px] md:text-xs" style="">
+                    © 2026 W AAFA. ELEGANCE IN EACH FABRIC.
+                </p>
+</div>
+<!-- Links Area (Span 8 columns to push right) -->
+<div class="md:col-span-8 flex flex-wrap justify-start md:justify-end gap-x-12 gap-y-6 items-end">
+<a class="font-serif text-zinc-500 dark:text-zinc-400 uppercase tracking-widest text-[10px] md:text-xs hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">Privacy Policy</a>
+<a class="font-serif text-zinc-500 dark:text-zinc-400 uppercase tracking-widest text-[10px] md:text-xs hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">Terms of Service</a>
+<a class="font-serif text-zinc-500 dark:text-zinc-400 uppercase tracking-widest text-[10px] md:text-xs hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">Shipping &amp; Returns</a>
+<a class="font-serif text-zinc-500 dark:text-zinc-400 uppercase tracking-widest text-[10px] md:text-xs hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">Sustainability</a>
+<a class="font-serif text-zinc-500 dark:text-zinc-400 uppercase tracking-widest text-[10px] md:text-xs hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300" href="#" style="">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

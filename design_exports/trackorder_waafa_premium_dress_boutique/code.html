@@ -1,0 +1,294 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Track Your Order | ELAN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#ffb2b9",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f0f1f1",
+                      "tertiary-container": "#a1645e",
+                      "tertiary": "#854c47",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#42465a",
+                      "on-primary-fixed-variant": "#91002f",
+                      "error": "#ba1a1a",
+                      "primary": "#b60f40",
+                      "secondary-container": "#dbdef8",
+                      "outline-variant": "#e2bec0",
+                      "inverse-primary": "#ffb2b9",
+                      "tertiary-fixed": "#ffdad6",
+                      "surface-container-low": "#f3f3f4",
+                      "surface-variant": "#e2e2e2",
+                      "on-secondary-container": "#5e6177",
+                      "background": "#f9f9f9",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e2e2e2",
+                      "surface-dim": "#dadada",
+                      "on-tertiary-container": "#fffbff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#5a5d73",
+                      "outline": "#8e6f72",
+                      "on-surface-variant": "#5a4042",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#2f3131",
+                      "on-tertiary-fixed": "#360e0b",
+                      "on-secondary-fixed": "#161b2d",
+                      "on-primary-fixed": "#400010",
+                      "on-tertiary-fixed-variant": "#6c3833",
+                      "secondary-fixed-dim": "#c2c5de",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#dee1fa",
+                      "surface-container-high": "#e8e8e8",
+                      "surface-bright": "#f9f9f9",
+                      "primary-container": "#d93057",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#f9f9f9",
+                      "tertiary-fixed-dim": "#feb4ac",
+                      "surface-tint": "#ba1342",
+                      "primary-fixed": "#ffdadc",
+                      "on-surface": "#1a1c1c",
+                      "on-background": "#1a1c1c",
+                      "surface-container": "#eeeeee",
+                      "on-primary-container": "#fffbff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-x": "5vw",
+                      "stack-md": "1.5rem",
+                      "section-gap": "8rem",
+                      "container-max": "1440px",
+                      "stack-sm": "0.5rem",
+                      "stack-lg": "3rem",
+                      "gutter": "2rem"
+              },
+              "fontFamily": {
+                      "display-xl": ["Noto Serif"],
+                      "label-caps": ["Manrope"],
+                      "headline-lg": ["Noto Serif"],
+                      "body-md": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "headline-md": ["Noto Serif"]
+              },
+              "fontSize": {
+                      "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus {
+            outline: none;
+            border-color: #b60f40 !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-2xl border-b border-rose-100/10 dark:border-rose-900/10 shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
+<div class="flex justify-between items-center w-full px-[5vw] py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-light tracking-[0.2em] uppercase text-rose-600 dark:text-rose-400 font-['Noto_Serif']" style="">waafa</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-neutral-500 hover:text-rose-600 transition-colors font-['Noto_Serif'] font-light tracking-wide" href="#" style="">Collections</a>
+<a class="text-neutral-500 hover:text-rose-600 transition-colors font-['Noto_Serif'] font-light tracking-wide" href="#" style="">New Arrivals</a>
+<a class="text-neutral-500 hover:text-rose-600 transition-colors font-['Noto_Serif'] font-light tracking-wide" href="#" style="">Boutiques</a>
+<a class="text-neutral-500 hover:text-rose-600 transition-colors font-['Noto_Serif'] font-light tracking-wide" href="#" style="">About</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="hover:opacity-70 transition-all duration-500 text-rose-600" style=""><span class="material-symbols-outlined" style="">shopping_bag</span></button>
+<button class="hover:opacity-70 transition-all duration-500 text-rose-600" style=""><span class="material-symbols-outlined" style="">person</span></button>
+</div>
+</div>
+</nav>
+<main class="pb-24 pt-40">
+<!-- Hero Search Section -->
+<!-- Tracking Visualizer -->
+<section class="px-[5vw] mb-section-gap max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Status & Details -->
+<div class="lg:col-span-8 space-y-stack-lg">
+<!-- Progress Bar -->
+<div class="glass p-10 rounded-xl border border-white/20">
+<div class="flex justify-between items-center mb-12">
+<div>
+<h3 class="font-headline-md text-headline-md mb-1" style="">In Transit</h3>
+<p class="text-secondary font-body-md" style="">Expected Delivery: Oct 24, 2026</p>
+</div>
+<span class="material-symbols-outlined text-primary text-4xl" style="">local_shipping</span>
+</div>
+<div class="relative pt-8 pb-4">
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant -translate-y-1/2"></div>
+<div class="absolute top-1/2 left-0 w-[66%] h-[2px] bg-primary -translate-y-1/2"></div>
+<div class="relative flex justify-between">
+<div class="flex flex-col items-center gap-4 bg-background px-2">
+<div class="w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<span class="font-label-caps text-label-caps text-primary" style="">Order Placed</span>
+</div>
+<div class="flex flex-col items-center gap-4 bg-background px-2">
+<div class="w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<span class="font-label-caps text-label-caps text-primary" style="">Processing</span>
+</div>
+<div class="flex flex-col items-center gap-4 bg-background px-2">
+<div class="w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<span class="font-label-caps text-label-caps text-primary" style="">In Transit</span>
+</div>
+<div class="flex flex-col items-center gap-4 bg-background px-2 opacity-30">
+<div class="w-4 h-4 rounded-full bg-outline"></div>
+<span class="font-label-caps text-label-caps text-secondary" style="">Delivered</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Delivery Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="glass p-8 rounded-xl border border-white/20">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase" style="">Shipping Address</h4>
+<p class="font-headline-md text-[20px] mb-2" style="">Sophia Montgomery</p>
+<p class="text-secondary leading-relaxed" style="">
+                                452 Royal Crescent Mews<br>
+                                Kensington, London W8 4UX<br>
+                                United Kingdom
+                            </p>
+</div>
+<div class="glass p-8 rounded-xl border border-white/20">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase" style="">Carrier Information</h4>
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-primary" style="">inventory_2</span>
+<div>
+<p class="font-body-md font-bold" style="">DHL Express Luxury</p>
+<p class="text-secondary text-sm" style="">Tracking: 928374650291</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-primary font-label-caps border-b border-primary/20 pb-1 hover:border-primary transition-all" href="#" style="">
+                                VIEW EXTERNAL TRACKING
+                                <span class="material-symbols-outlined text-[14px]" style="">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right: Order Summary -->
+<div class="lg:col-span-4">
+<div class="glass p-8 rounded-xl border border-white/20 sticky top-32">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-8 uppercase" style="">Your Selection</h4>
+<div class="space-y-6 mb-8">
+<div class="flex gap-4">
+<div class="w-20 h-28 flex-shrink-0 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a luxury silk dress in ivory white with delicate lace detailing and a flowing silhouette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_sHPgkwsViFDmMjL8H9p2oivgEJBxKqLaYMrsasiJDOpn-ZLxxT1X8Bi_cF6gfy7h82vmQMzbksugv9knry7C9L34GnbGuDjmweLyMtXAxTUezcHet-f3Qq_RtlQeDNjXzlQlYGngQ-IwUJdrSP2d_mt6mZb2MwdH_GAVb-L9n0u5eDIT32VmXsR-8ZD8iw8Fj07K75hxEKLnQOWuEfCEVm3Oop_06q75bql0S1JC6aEunAAr2CJP7goHbX2P4BkyLKOmP2QmCUQ" style="">
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<p class="font-headline-md text-sm" style="">Luna Silk Gown</p>
+<p class="text-secondary text-xs uppercase tracking-widest mt-1" style="">IVORY / SIZE S</p>
+</div>
+<p class="font-body-md font-medium" style="">£1,250</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-20 h-28 flex-shrink-0 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Pair of designer high-heeled shoes in soft pink satin with a pointed toe and elegant strap" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDldpg7r5269b05fui5jaImra_t__lcfVIsTaGgxQ6RLZ4-oAtos1a3mNJ9Bu7AMDkLqaPstXMTpE29kBWK-HJZtrJvB05Wxa9PudM2bjLmtzDhr6Lqm99_-DqYik5f2ixlcq8aBcNGo4aflF3K-NOMvuHktDTqYkTvtwSQmoFRbsW00940ku9Wotld75BmSP6LKxcKQs7bZp_2yX-edGrrSEbFklLIpl4Kyimyu96zHLfzdZGJPj3a_MTWuDjxht-tjciNO-RmVvI" style="">
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<p class="font-headline-md text-sm" style="">Aria Satin Pumps</p>
+<p class="text-secondary text-xs uppercase tracking-widest mt-1" style="">ROSE / SIZE 38</p>
+</div>
+<p class="font-body-md font-medium" style="">£580</p>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-6 space-y-3">
+<div class="flex justify-between text-secondary">
+<span class="font-label-caps text-xs" style="">Subtotal</span>
+<span class="font-body-md text-sm" style="">£1,830</span>
+</div>
+<div class="flex justify-between text-secondary">
+<span class="font-label-caps text-xs" style="">Express Delivery</span>
+<span class="font-body-md text-sm" style="">Complementary</span>
+</div>
+<div class="flex justify-between text-on-surface pt-2">
+<span class="font-label-caps" style="">Total Order</span>
+<span class="font-body-md font-bold" style="">£1,830</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Customer Support Section -->
+<section class="px-[5vw] mb-section-gap max-w-container-max mx-auto text-center border-t border-rose-50 pt-section-gap">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase" style="">Need Assistance?</h4>
+<p class="font-headline-md text-headline-md mb-8" style="">Our concierges are at your service.</p>
+<div class="flex flex-col md:flex-row justify-center items-center gap-12">
+<a class="group flex items-center gap-3" href="#" style="">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" style="">chat</span>
+<span class="font-label-caps text-label-caps border-b border-transparent group-hover:border-primary transition-all" style="">Live Concierge</span>
+</a>
+<a class="group flex items-center gap-3" href="#" style="">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" style="">mail</span>
+<span class="font-label-caps text-label-caps border-b border-transparent group-hover:border-primary transition-all" style="">Email Client Care</span>
+</a>
+<a class="group flex items-center gap-3" href="#" style="">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" style="">call</span>
+<span class="font-label-caps text-label-caps border-b border-transparent group-hover:border-primary transition-all" style="">+44 20 7946 0123</span>
+</a>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-6 py-4 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-lg border-t border-rose-50/20 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] z-50 rounded-t-[2rem]">
+<div class="flex flex-col items-center text-neutral-400 dark:text-neutral-600">
+<span class="material-symbols-outlined" style="">apps</span>
+<span class="font-['Noto_Serif'] text-[10px] uppercase tracking-tighter" style="">Shop</span>
+</div>
+<div class="flex flex-col items-center text-rose-600 dark:text-rose-400 font-bold">
+<span class="material-symbols-outlined" style="">location_on</span>
+<span class="font-['Noto_Serif'] text-[10px] uppercase tracking-tighter" style="">Track</span>
+</div>
+<div class="flex flex-col items-center text-neutral-400 dark:text-neutral-600">
+<span class="material-symbols-outlined" style="">favorite</span>
+<span class="font-['Noto_Serif'] text-[10px] uppercase tracking-tighter" style="">Wishlist</span>
+</div>
+<div class="flex flex-col items-center text-neutral-400 dark:text-neutral-600">
+<span class="material-symbols-outlined" style="">shopping_bag</span>
+<span class="font-['Noto_Serif'] text-[10px] uppercase tracking-tighter" style="">Bag</span>
+</div>
+</nav>
+<!-- Footer -->
+<footer class="bg-neutral-50 dark:bg-neutral-950 border-t border-neutral-200 dark:border-neutral-800 w-full px-[5vw] py-20 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-lg font-light tracking-widest text-neutral-900 dark:text-white font-['Noto_Serif']" style="">ELAN DIGITAL COUTURE</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-neutral-500 hover:text-rose-600 transition-all duration-300 font-['Noto_Serif'] text-sm font-light hover:tracking-wider" href="#" style="">Privacy Policy</a>
+<a class="text-neutral-500 hover:text-rose-600 transition-all duration-300 font-['Noto_Serif'] text-sm font-light hover:tracking-wider" href="#" style="">Terms of Service</a>
+<a class="text-neutral-500 hover:text-rose-600 transition-all duration-300 font-['Noto_Serif'] text-sm font-light hover:tracking-wider" href="#" style="">Shipping &amp; Returns</a>
+<a class="text-neutral-500 hover:text-rose-600 transition-all duration-300 font-['Noto_Serif'] text-sm font-light hover:tracking-wider" href="#" style="">Contact Us</a>
+</div>
+<div class="font-['Noto_Serif'] text-sm font-light text-neutral-400" style="">© 2026 ELAN DIGITAL COUTURE. ALL RIGHTS RESERVED.</div>
+</footer>
+</body></html>

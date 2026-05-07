@@ -1,0 +1,307 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>WAAFA - Digital Couture Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Noto+Serif:wght@300;400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#91002f",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface": "#f9f9f9",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "outline": "#8e6f72",
+                        "inverse-primary": "#ffb2b9",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#e2bec0",
+                        "on-primary": "#ffffff",
+                        "primary": "#b60f40",
+                        "on-secondary-container": "#5e6177",
+                        "on-primary-fixed": "#400010",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-fixed": "#ffdad6",
+                        "surface-variant": "#e2e2e2",
+                        "background": "#f9f9f9",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#854c47",
+                        "on-tertiary-fixed": "#360e0b",
+                        "on-primary-container": "#fffbff",
+                        "tertiary-fixed-dim": "#feb4ac",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#ba1342",
+                        "primary-fixed": "#ffdadc",
+                        "on-tertiary-container": "#fffbff",
+                        "on-background": "#1a1c1c",
+                        "secondary-container": "#dbdef8",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "secondary-fixed-dim": "#c2c5de",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary": "#5a5d73",
+                        "on-surface-variant": "#5a4042",
+                        "on-secondary-fixed-variant": "#42465a",
+                        "on-tertiary-fixed-variant": "#6c3833",
+                        "on-surface": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dee1fa",
+                        "primary-container": "#d93057",
+                        "tertiary-container": "#a1645e",
+                        "on-secondary-fixed": "#161b2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "3rem",
+                        "section-gap": "8rem",
+                        "margin-x": "5vw",
+                        "gutter": "2rem",
+                        "stack-md": "1.5rem",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Manrope"],
+                        "headline-md": ["Noto Serif"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-lg": ["Noto Serif"],
+                        "display-xl": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-100/20 dark:border-gray-800/20 shadow-sm shadow-gray-200/5 dark:shadow-none">
+<div class="flex justify-between items-center px-[5vw] py-6 w-full max-w-full">
+<nav class="hidden md:flex gap-8">
+<a class="font-['Manrope'] tracking-tight text-sm uppercase text-gray-600 dark:text-gray-400 hover:text-rose-500 transition-colors hover:opacity-70 transition-opacity duration-300" href="#" style="">Collections</a>
+<a class="font-['Manrope'] tracking-tight text-sm uppercase text-gray-600 dark:text-gray-400 hover:text-rose-500 transition-colors hover:opacity-70 transition-opacity duration-300" href="#" style="">Couture</a>
+<a class="font-['Manrope'] tracking-tight text-sm uppercase text-gray-600 dark:text-gray-400 hover:text-rose-500 transition-colors hover:opacity-70 transition-opacity duration-300" href="#" style="">About</a>
+</nav>
+<div class="text-2xl font-['Noto_Serif'] font-light tracking-[0.2em] text-gray-900 dark:text-white" style="">WAAFA</div>
+<div class="flex gap-6 text-rose-500 dark:text-rose-400">
+<button aria-label="search" class="hover:opacity-70 transition-opacity duration-300" style="">
+<span class="material-symbols-outlined" style="">search</span>
+</button>
+<button aria-label="favorite" class="hover:opacity-70 transition-opacity duration-300" style="">
+<span class="material-symbols-outlined" style="">favorite</span>
+</button>
+<button aria-label="shopping_bag" class="hover:opacity-70 transition-opacity duration-300" style="">
+<span class="material-symbols-outlined" style="">shopping_bag</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[120px] pb-section-gap px-margin-x max-w-container-max mx-auto w-full">
+<!-- Profile Header -->
+<section class="mb-section-gap flex flex-col md:flex-row items-end justify-between border-b border-surface-variant pb-8 gap-8">
+<div>
+<p class="font-label-caps text-label-caps text-secondary mb-2 tracking-[0.2em]" style="">WAAFA Circle | Platinum Member</p>
+<h1 class="font-display-xl text-display-xl text-on-background" style="">Julianne V. Sterling</h1>
+</div>
+<button class="group px-8 py-3 border border-secondary text-on-background hover:bg-surface-variant transition-colors duration-300 flex items-center gap-3" style="">
+<span class="font-label-caps text-label-caps uppercase tracking-widest" style="">Edit Profile</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" style="">arrow_forward</span>
+</button>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Dashboard Navigation (Sidebar on Desktop) -->
+<aside class="lg:col-span-3">
+<nav class="sticky top-[150px] flex flex-col gap-6">
+<a class="font-label-caps text-label-caps text-primary border-l-2 border-primary pl-4 py-1 flex items-center gap-3" href="#" style="">
+<span class="material-symbols-outlined text-[18px]" style="">dresser</span>
+                        My Wardrobe
+                    </a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-on-background border-l-2 border-transparent hover:border-surface-variant pl-4 py-1 flex items-center gap-3 transition-colors" href="#" style="">
+<span class="material-symbols-outlined text-[18px]" style="">favorite</span>
+                        Saved Collections
+                    </a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-on-background border-l-2 border-transparent hover:border-surface-variant pl-4 py-1 flex items-center gap-3 transition-colors" href="#" style="">
+<span class="material-symbols-outlined text-[18px]" style="">diamond</span>Order</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-on-background border-l-2 border-transparent hover:border-surface-variant pl-4 py-1 flex items-center gap-3 transition-colors" href="#" style="">
+<span class="material-symbols-outlined text-[18px]" style="">settings</span>
+                        Account Settings
+                    </a>
+</nav>
+</aside>
+<!-- Dashboard Canvas -->
+<div class="lg:col-span-9 flex flex-col gap-section-gap">
+<!-- Recent Acquisitions -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md" style="">Recent Acquisitions</h2>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors underline underline-offset-4 decoration-transparent hover:decoration-primary" href="#" style="">View All History</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Order Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative w-full aspect-[3/4] bg-surface-container-low mb-4 overflow-hidden">
+<img alt="Silk Evening Gown" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="high fashion editorial shot of a flowing silk evening gown in deep burgundy on a minimal concrete background with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5q7ytauVXVi-8nRWfIpqb0VkA34qwwCpVBvT31TWK0F5Hm8Kv4j4MfIxMzLwCwwVwPQ_3GMeEL53Mab3PSvhFxIUDcetCqUImryi2_2sHB5ee4aYYuGyZIezLrt3aaLgO3lX9Ui4Ohyx6q9zMLztz82ViUiFdgLTJY0m5VfJC1Ke_-7e1w3mbynRz0di4usftRIgW8gYEqX9bguAthADpMVuRRIi49omhb9LI7Bayoxayxk0Jm5G9orB5a4UC48eZkffnYvk2Ol4" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-caps text-label-caps text-secondary mb-1" style="">Delivered Oct 12, 2023</p>
+<h3 class="font-headline-md text-headline-md text-[24px]" style="">Crimson Silk Drapery</h3>
+</div>
+<button aria-label="View Details" class="w-10 h-10 rounded-full border border-surface-variant flex items-center justify-center hover:bg-surface-variant transition-colors" style="">
+<span class="material-symbols-outlined text-[18px]" style="">north_east</span>
+</button>
+</div>
+</div>
+<!-- Order Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative w-full aspect-[3/4] bg-surface-container-low mb-4 overflow-hidden">
+<img alt="Structured Blazer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="close up of a premium structured wool blazer in soft cream color hanging against a pale neutral background, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtBK5GJ0Y2sQoG6oGDX4_vbYNyhxPM9s6aQmea9XIfDQfCgGAYCrtDFARinSZLhnzkUODU-3_ZoAdJlZvxthK5iToQnYOcdgDg48trnw4G9alpbiy98xe0iJH1IjjZQjQYfyhsgrYWSx3aujvmGxb4MjZZ7s65t85XwOTFukwp9JEqOXaW3B7kUX1s9kmtGuk8HL5yYOruX_Bjx4wE3Ou6B6PDFkapyeZIMSYzLgPBmkEInwfYNwk2oEU5nTer9vvoWfexLsBtP4Q" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-caps text-label-caps text-primary mb-1" style="">In Transit - Est. Oct 28</p>
+<h3 class="font-headline-md text-headline-md text-[24px]" style="">Alabaster Wool Blazer</h3>
+</div>
+<button class="font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:opacity-70 transition-opacity" style="">Track Package</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Curated Selection (Wishlist) -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md" style="">Your Curated Selection</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+<!-- Wishlist Item 1 -->
+<div class="group">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low mb-3 overflow-hidden">
+<img alt="Leather Tote" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="minimalist premium leather tote bag in rich espresso brown sitting on a marble plinth, studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIKV9bSYPgpiIa7Uf35fYeDY3SWn-mOa2EraPScT9tl8FbhygQz8gXOm-ZJIubOTYfPI4Jd3ex6hdGEt7cV-yvDg8Iuk8WtJ2cDeqbr2g7gNtdO-A5zfQlvICjKTQw5yRFLpvdZwhPnu6-DNjvU2T8mTwfvCSxatOihWWzE5Kkv8MzylrDFpluX2mPrrWJzttwCUbchxj4AUWACWRigBEyNtXROa-_5moHaVMhLEool4lRWXZBmThef7il5OFljmqXeEMe1sjzZU0" style="">
+<button aria-label="Remove from wishlist" class="absolute top-4 right-4 text-primary hover:scale-110 transition-transform" style="">
+<span class="material-symbols-outlined filled-icon" style="">favorite</span>
+</button>
+</div>
+<h4 class="font-headline-md text-headline-md text-[18px] text-center" style="">Espresso Calfskin Tote</h4>
+<p class="font-body-md text-body-md text-secondary text-center mt-1" style="">$1,250</p>
+</div>
+<!-- Wishlist Item 2 -->
+<div class="group">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low mb-3 overflow-hidden">
+<img alt="Cashmere Scarf" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="soft textured cashmere scarf draped elegantly in muted blush pink, delicate lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHNE_HSFX1ttvpzgpNMlG6SIA4SDvuE7hvA85lSjyA_z09rSQqhjFRONxXe2PuwTk6ZEQfLNsG5wU91OG_kXbT4nCrX74U-CBXmkpqV0KUHMZ1PamJ2EX1brTRM4aN6zB5GudGw8dQI-WuFBnrG4Rk8-fCVyisNsx8Derd9PYLCxbgOupQSrsHo6XKXpN0TBXi3bdasl_G9G4J2krjq5JvM4mm__ypP1ybFMZfA4XNnRhvr5LMZPerW-hgLbLWa88K46ZMP_3ck2g" style="">
+<button aria-label="Remove from wishlist" class="absolute top-4 right-4 text-primary hover:scale-110 transition-transform" style="">
+<span class="material-symbols-outlined filled-icon" style="">favorite</span>
+</button>
+</div>
+<h4 class="font-headline-md text-headline-md text-[18px] text-center" style="">Blush Cashmere Wrap</h4>
+<p class="font-body-md text-body-md text-secondary text-center mt-1" style="">$480</p>
+</div>
+<!-- Wishlist Item 3 -->
+<div class="group hidden md:block">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low mb-3 overflow-hidden">
+<img alt="Stiletto Heels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="sleek architectural stiletto heels in black patent leather on a stark white background, high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2TM5et_cn8FIblR9ApPPHwicV_3s9B07NUQx6vyZFeoSet8u523KG8KpVvlJJ_UnaIGvQXBOx3ykyff6Yd1Dk8KTQq2gKu4LIZWMuVXFmXDsOQGF2fPQIEP5Kve3mkhX7-YQ7Z-z6rKJcwYUMnUtsnpJ29k4pPOFe9ugQzWKBuv96LY5yyQzj8JG7F58s3yKIjSZdXVIzu6toFpi5wlJWq8LrfPSKQksSXAHPmVkmUDYoRvyRea4RcqR5LnL_T2-C5-a8wPPhM94" style="">
+<button aria-label="Remove from wishlist" class="absolute top-4 right-4 text-primary hover:scale-110 transition-transform" style="">
+<span class="material-symbols-outlined filled-icon" style="">favorite</span>
+</button>
+</div>
+<h4 class="font-headline-md text-headline-md text-[18px] text-center" style="">Obsidian Stilettos</h4>
+<p class="font-body-md text-body-md text-secondary text-center mt-1" style="">$890</p>
+</div>
+</div>
+</section>
+<!-- Account Quick Links -->
+<section class="border-t border-surface-variant pt-section-gap">
+<h2 class="font-headline-md text-headline-md mb-8" style="">Account Details</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<a class="group p-8 border border-surface-variant hover:border-primary transition-colors flex flex-col items-start bg-surface-container-lowest" href="#" style="">
+<span class="material-symbols-outlined text-[24px] text-secondary mb-4 group-hover:text-primary transition-colors" style="">location_on</span>
+<h3 class="font-label-caps text-label-caps uppercase mb-2" style="">Shipping Addresses</h3>
+<p class="font-body-md text-body-md text-secondary text-sm" style="">Manage delivery locations</p>
+</a>
+<a class="group p-8 border border-surface-variant hover:border-primary transition-colors flex flex-col items-start bg-surface-container-lowest" href="#" style="">
+<span class="material-symbols-outlined text-[24px] text-secondary mb-4 group-hover:text-primary transition-colors" style="">credit_card</span>
+<h3 class="font-label-caps text-label-caps uppercase mb-2" style="">Payment Methods</h3>
+<p class="font-body-md text-body-md text-secondary text-sm" style="">Update billing information</p>
+</a>
+<a class="group p-8 border border-surface-variant hover:border-primary transition-colors flex flex-col items-start bg-surface-container-lowest" href="#" style="">
+<span class="material-symbols-outlined text-[24px] text-secondary mb-4 group-hover:text-primary transition-colors" style="">tune</span>
+<h3 class="font-label-caps text-label-caps uppercase mb-2" style="">Preferences</h3>
+<p class="font-body-md text-body-md text-secondary text-sm" style="">Size profiles &amp; notifications</p>
+</a>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[2rem] md:hidden bg-white/90 dark:bg-gray-950/90 backdrop-blur-2xl border-t border-gray-100 dark:border-gray-800 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-6 pb-4">
+<a class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 space-y-1 hover:text-rose-400 transition-colors" href="#" style="">
+<span class="material-symbols-outlined" style="">home_max</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest font-medium" style="">Boutique</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 space-y-1 hover:text-rose-400 transition-colors" href="#" style="">
+<span class="material-symbols-outlined" style="">search</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest font-medium" style="">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 space-y-1 hover:text-rose-400 transition-colors" href="#" style="">
+<span class="material-symbols-outlined" style="">favorite</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest font-medium" style="">Wishlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-rose-500 space-y-1 scale-95 duration-200" href="#" style="">
+<span class="material-symbols-outlined filled-icon" style="">person</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest font-medium text-rose-500" style="">Profile</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="w-full mt-32 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center px-[5vw] py-12 gap-8 mb-20 md:mb-0">
+<div class="text-gray-900 dark:text-white font-['Noto_Serif'] text-xl tracking-[0.2em]" style="">WAAFA</div>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="font-['Manrope'] text-xs tracking-widest uppercase text-gray-400 hover:text-gray-900 dark:hover:text-white underline underline-offset-4 decoration-rose-500/30 opacity-80 hover:opacity-100 transition-opacity" href="#" style="">Privacy Policy</a>
+<a class="font-['Manrope'] text-xs tracking-widest uppercase text-gray-400 hover:text-gray-900 dark:hover:text-white underline underline-offset-4 decoration-rose-500/30 opacity-80 hover:opacity-100 transition-opacity" href="#" style="">Terms of Service</a>
+<a class="font-['Manrope'] text-xs tracking-widest uppercase text-gray-400 hover:text-gray-900 dark:hover:text-white underline underline-offset-4 decoration-rose-500/30 opacity-80 hover:opacity-100 transition-opacity" href="#" style="">Sustainability</a>
+<a class="font-['Manrope'] text-xs tracking-widest uppercase text-gray-400 hover:text-gray-900 dark:hover:text-white underline underline-offset-4 decoration-rose-500/30 opacity-80 hover:opacity-100 transition-opacity" href="#" style="">Contact</a>
+</nav>
+<div class="font-['Manrope'] text-xs tracking-widest uppercase text-gray-500" style="">© 2026 WAAFA DIGITAL COUTURE</div>
+</footer>
+</body></html>

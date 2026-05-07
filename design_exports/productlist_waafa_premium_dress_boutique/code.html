@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;700&amp;family=Manrope:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#400010",
+                        "surface-container": "#eeeeee",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#91002f",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary-fixed-dim": "#feb4ac",
+                        "outline": "#8e6f72",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e2e2e2",
+                        "surface-tint": "#ba1342",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface": "#1a1c1c",
+                        "surface": "#f9f9f9",
+                        "surface-bright": "#f9f9f9",
+                        "outline-variant": "#e2bec0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "primary-fixed": "#ffdadc",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#a1645e",
+                        "on-secondary-container": "#5e6177",
+                        "primary": "#b60f40",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-surface-variant": "#5a4042",
+                        "on-secondary-fixed-variant": "#42465a",
+                        "on-tertiary-fixed": "#360e0b",
+                        "secondary-fixed-dim": "#c2c5de",
+                        "primary-container": "#d93057",
+                        "on-background": "#1a1c1c",
+                        "inverse-primary": "#ffb2b9",
+                        "secondary-fixed": "#dee1fa",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-dim": "#dadada",
+                        "secondary": "#5a5d73",
+                        "background": "#f9f9f9",
+                        "tertiary": "#854c47",
+                        "inverse-surface": "#2f3131",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#161b2d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary-fixed": "#ffdad6",
+                        "secondary-container": "#dbdef8",
+                        "on-tertiary-fixed-variant": "#6c3833",
+                        "surface-container-low": "#f3f3f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1.5rem",
+                        "margin-x": "5vw",
+                        "stack-lg": "3rem",
+                        "container-max": "1440px",
+                        "gutter": "2rem",
+                        "section-gap": "8rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Noto Serif"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-md": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "display-xl": ["Noto Serif"],
+                        "body-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 sticky z-50 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-[20px] border-b border-neutral-100/50 dark:border-neutral-800/50 shadow-[0_4px_30px_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-center w-full px-[5vw] py-6">
+<div class="text-2xl font-light tracking-[0.2em] text-neutral-900 dark:text-neutral-50 font-['Noto_Serif']">WAAFA</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-[#ED4064] relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[1.5px] after:bg-[#ED4064] font-['Manrope'] text-xs tracking-widest uppercase" href="#">COLLECTIONS</a>
+<a class="text-neutral-500 dark:text-neutral-400 font-['Manrope'] text-xs tracking-widest uppercase hover:text-[#ED4064] transition-colors duration-300" href="#">COUTURE</a>
+<a class="text-neutral-500 dark:text-neutral-400 font-['Manrope'] text-xs tracking-widest uppercase hover:text-[#ED4064] transition-colors duration-300" href="#">OUR STORY</a>
+<a class="text-neutral-500 dark:text-neutral-400 font-['Manrope'] text-xs tracking-widest uppercase hover:text-[#ED4064] transition-colors duration-300" href="#">EDITORIAL</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="scale-100 active:scale-95 transition-transform text-neutral-900 dark:text-neutral-50">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="scale-100 active:scale-95 transition-transform text-neutral-900 dark:text-neutral-50">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="scale-100 active:scale-95 transition-transform text-neutral-900 dark:text-neutral-50">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Category Header -->
+<section class="px-[5vw] pt-20 pb-12">
+<nav class="mb-8">
+<ol class="flex items-center gap-2 text-label-caps font-label-caps text-neutral-400">
+<li><a class="hover:text-primary transition-colors" href="#">HOME</a></li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[12px]">chevron_right</span></li>
+<li><a class="hover:text-primary transition-colors" href="#">COLLECTIONS</a></li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[12px]">chevron_right</span></li>
+<li class="text-neutral-900">EVENING GOWNS</li>
+</ol>
+</nav>
+<div class="max-w-4xl">
+<h1 class="font-display-xl text-display-xl text-neutral-900 mb-4">Evening Gowns</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl">
+                    Discover our curation of ethereal silhouettes, meticulously crafted from the finest silks and tulles. Each piece is a testament to digital couture excellence.
+                </p>
+</div>
+</section>
+<!-- Refined Filtering & Sorting -->
+<section class="px-[5vw] mb-12 sticky top-[88px] z-40">
+<div class="bg-white/90 backdrop-blur-md border-y border-neutral-100 flex flex-wrap items-center justify-between py-4 px-6">
+<div class="flex items-center gap-10">
+<button class="group flex items-center gap-2 font-label-caps text-label-caps text-neutral-900 hover:text-primary transition-colors">
+                        CATEGORY
+                        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">keyboard_arrow_down</span>
+</button>
+<button class="group flex items-center gap-2 font-label-caps text-label-caps text-neutral-900 hover:text-primary transition-colors">
+                        COLOR
+                        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">keyboard_arrow_down</span>
+</button>
+<button class="group flex items-center gap-2 font-label-caps text-label-caps text-neutral-900 hover:text-primary transition-colors">
+                        SIZE
+                        <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-[10px] text-neutral-400">12 ITEMS FOUND</span>
+<div class="h-4 w-[1px] bg-neutral-200"></div>
+<button class="group flex items-center gap-2 font-label-caps text-label-caps text-neutral-900 hover:text-primary transition-colors">
+                        SORT BY: NEWEST
+                        <span class="material-symbols-outlined text-[16px]">swap_vert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Product Grid -->
+<section class="px-[5vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+<!-- Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container-low mb-6">
+<img alt="Midnight Silk Column" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Editorial fashion shot of a woman in a sleek midnight blue silk column gown standing in a minimalist white studio with soft dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjAuX614GZ8aV1fDFeLtibl1H7cW_zNA-JlWL18Lot-z4sR9L512d-Ynsf684diJW3VIXX5S2OGHMjORcOyDTePePcZQXjEiE6q342NqaEesOf6FxYDSbyqTNh-vyXIaAwVPmWMcnnpr8AtX4WLHQ0GKevjhNB6mT1yy6-U3rXYP4vpyFSjvNnV867GFdmALCBtHt-M-6whQYbynlaB3yrvrmzZgjJZb1F4XmnlH_B3awgh2PyakXTyWX20vUFfnzizjKD4TDZFCI"/>
+<div class="absolute top-4 left-4 bg-white px-3 py-1 font-label-caps text-[10px] tracking-widest text-[#ED4064]">NEW ARRIVAL</div>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8 px-8">
+<button class="w-full bg-white text-neutral-900 font-label-caps py-4 tracking-widest hover:bg-neutral-900 hover:text-white transition-colors duration-300">QUICK ADD</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-neutral-900 mb-2">The Midnight Silk Column</h3>
+<p class="font-body-md text-secondary tracking-widest text-sm uppercase">$2,450.00</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container-low mb-6">
+<img alt="Ethereal Tulle Dream" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Full length shot of a voluminous blush pink tulle gown floating against a soft cream background with warm atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZIaRf999kHqdr61KGP3tY1RTyzXLqwRz3ZV7cauCq45WmsheMF0ZxtKO-uWpugH8zspX_eztBFKjDdiixhxy0RaUi9dHv29we7P6zJRcbluGBJGC6pqJNfGr0yqcndW44xiNNz-_gbOtKKqHV2nmxagvPMrY9XtxekWKntshXoJP2kZEwOiEQJtBF0Gm9KFaHC_p45_pJGFWCRdM-Sxgrzh8bfz5e0W9SnZZ83_9wEXU-oCZQ8TlrtuPyMr3lFJavZOptQCNU91A"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8 px-8">
+<button class="w-full bg-white text-neutral-900 font-label-caps py-4 tracking-widest hover:bg-neutral-900 hover:text-white transition-colors duration-300">QUICK ADD</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-neutral-900 mb-2">Ethereal Tulle Dream</h3>
+<p class="font-body-md text-secondary tracking-widest text-sm uppercase">$3,100.00</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container-low mb-6">
+<img alt="Sculpted Velvet Noir" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern high fashion pose of a woman in a deep black velvet dress with architectural shoulders in a high-contrast lighting setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqNrVtM5-GD-BaMvFITNabxUyecM1wNAho5x3WhW6j2Bu7gcCpC7Qs1FgEzVNuDgICSUhAxSZJgEE3OIaJEqR8hBeOqVIn2EPS0eAyrwGrV7jcNlKJo6tNpUYL4Cehkn8siHz6CFH3AIJfAIdl1sqfnrc03FxsqJ9Z26gBh9GvQSJNLan8Ayw-saQIkevGtxli-tuNvd2ECSt1299ZR5hmQ_TICWNSE6zHUM8E8wJomUHRlLHAtSuaRRqtc03Q3oalrIdbfDfsR8s"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8 px-8">
+<button class="w-full bg-white text-neutral-900 font-label-caps py-4 tracking-widest hover:bg-neutral-900 hover:text-white transition-colors duration-300">QUICK ADD</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-neutral-900 mb-2">Sculpted Velvet Noir</h3>
+<p class="font-body-md text-secondary tracking-widest text-sm uppercase">$1,890.00</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container-low mb-6">
+<img alt="Floating Organza Wrap" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Detailed view of a light ivory organza dress with intricate folds and textures caught in gentle motion under soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwjwJeArOl12uPE2A4ViSpEWTimUSAKMy3FSLD5VXqLY0fIMTz2U5F1rJ1fTTszHUah8CD1NPXXAcJBQWxc0c2pa-ypFQpOFEgxM4s02_9k1lTRvEwu4vWgrwxz-wIVYLb4cdNGtSADWjJZmG7IPV7o06nK5UBEPWqb8Wc_clg9c-jMLgcYRBD2Myf0vVtnVMT0drh_y2ik3KzWJKXX5kdIDXuhXItCTh5RxVV-l6OXxpUnZyP-zYcHjtROQGXkKDRaoR3YF51eoI"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8 px-8">
+<button class="w-full bg-white text-neutral-900 font-label-caps py-4 tracking-widest hover:bg-neutral-900 hover:text-white transition-colors duration-300">QUICK ADD</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-neutral-900 mb-2">Floating Organza Wrap</h3>
+<p class="font-body-md text-secondary tracking-widest text-sm uppercase">$2,200.00</p>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container-low mb-6">
+<img alt="The Crimson Siren" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Stunning model in a vibrant crimson evening gown with a high slit and floor-sweeping train, walking through a grand architectural hall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUD2BQCmzzkWsyMkegQ_dWzoEtkQgDtPTkMZPwTneA1sK91ylfwYK7NBymyNja9qjUo_KF2EcuYaP27a4l80BfrdEtEchOcYvDpCj31ygl5m7J4xY5aKY-ZAvqMZImHD7y2ydokjncq5Od6OijP1Y_xLYaIbl0ohNzLDxqfkhCZwhcaMD1O7d9JV9qpQqNv4HGGHynwjZXIGGk3At3sMLt1opYR-DKkK602QpMCCHDfTVUPUFeeYU8bb8Qh7nGwM8QMnirsMIQ5fw"/>
+<div class="absolute top-4 left-4 bg-white px-3 py-1 font-label-caps text-[10px] tracking-widest text-[#ED4064]">LIMITED</div>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8 px-8">
+<button class="w-full bg-white text-neutral-900 font-label-caps py-4 tracking-widest hover:bg-neutral-900 hover:text-white transition-colors duration-300">QUICK ADD</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-neutral-900 mb-2">The Crimson Siren</h3>
+<p class="font-body-md text-secondary tracking-widest text-sm uppercase">$3,400.00</p>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container-low mb-6">
+<img alt="Gilded Lace Mermaid" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up shot of intricate gold lace embroidery on a cream colored form-fitting mermaid gown with soft bokeh lights in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs6VnA1s3b-Mb3aGn2jPC7uLU-JSQ30B7-MOPKbighUH3v2jGV4TiJ2ZYowKuRSgIfTcI8E0-vAJUbUnBtj5canVV5ykvtkDtJ9C5zFIGmmo4qsnckq2GVEtHjYGcXs_-WNkcdpc4PhxcSafllgJyK9cDSq-K_Iy6CIMYTSJogU0GD1I_2paxDp9ua2k8_nwg4oARNI-LQHbz2D6UYgqUMZeMKBDpwInpepzaMOW2mwuWGG9mfgz6skFt6Y9E0HwQ0MztYK7RqXHo"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8 px-8">
+<button class="w-full bg-white text-neutral-900 font-label-caps py-4 tracking-widest hover:bg-neutral-900 hover:text-white transition-colors duration-300">QUICK ADD</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-neutral-900 mb-2">Gilded Lace Mermaid</h3>
+<p class="font-body-md text-secondary tracking-widest text-sm uppercase">$4,200.00</p>
+</div>
+</div>
+</section>
+<!-- Pagination -->
+<section class="flex flex-col items-center justify-center section-gap py-20">
+<p class="font-label-caps text-[10px] text-neutral-400 mb-6 tracking-[0.3em]">6 OF 12 ITEMS DISPLAYED</p>
+<div class="w-64 h-[1px] bg-neutral-100 relative mb-12">
+<div class="absolute left-0 top-0 h-full bg-[#ED4064] w-1/2"></div>
+</div>
+<button class="px-12 py-5 border border-neutral-900 font-label-caps text-label-caps text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all duration-500 tracking-[0.2em] uppercase">
+                DISCOVER MORE
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-neutral-100 dark:border-neutral-900 pt-20 pb-10 mt-20 bg-white dark:bg-neutral-950">
+<div class="max-w-7xl mx-auto flex flex-col items-center gap-8 px-8">
+<div class="text-xl font-light tracking-widest text-neutral-900 dark:text-neutral-50">WAAFA</div>
+<div class="flex flex-wrap justify-center gap-12 text-center">
+<a class="font-['Manrope'] text-[10px] tracking-[0.15em] uppercase text-neutral-400 dark:text-neutral-600 hover:text-[#ED4064] transition-all duration-300" href="#">CUSTOMER CARE</a>
+<a class="font-['Manrope'] text-[10px] tracking-[0.15em] uppercase text-neutral-400 dark:text-neutral-600 hover:text-[#ED4064] transition-all duration-300" href="#">SHIPPING &amp; RETURNS</a>
+<a class="font-['Manrope'] text-[10px] tracking-[0.15em] uppercase text-neutral-400 dark:text-neutral-600 hover:text-[#ED4064] transition-all duration-300" href="#">PRIVACY POLICY</a>
+<a class="font-['Manrope'] text-[10px] tracking-[0.15em] uppercase text-neutral-400 dark:text-neutral-600 hover:text-[#ED4064] transition-all duration-300" href="#">TERMS OF SERVICE</a>
+<a class="font-['Manrope'] text-[10px] tracking-[0.15em] uppercase text-neutral-400 dark:text-neutral-600 hover:text-[#ED4064] transition-all duration-300" href="#">BOUTIQUES</a>
+</div>
+<div class="flex gap-8 mt-4">
+<a class="text-neutral-400 hover:text-[#ED4064] transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-neutral-400 hover:text-[#ED4064] transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-neutral-400 hover:text-[#ED4064] transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+<div class="mt-12 text-center">
+<p class="font-['Manrope'] text-[10px] tracking-[0.15em] uppercase text-neutral-400 dark:text-neutral-600">© 2024 WAAFA DIGITAL COUTURE. ALL RIGHTS RESERVED.</p>
+</div>
+</div>
+</footer>
+</body></html>

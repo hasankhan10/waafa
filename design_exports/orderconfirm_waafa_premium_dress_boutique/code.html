@@ -1,0 +1,268 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#854c47",
+                        "surface-dim": "#dadada",
+                        "secondary-fixed-dim": "#c2c5de",
+                        "outline": "#8e6f72",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-low": "#f3f3f4",
+                        "inverse-primary": "#ffb2b9",
+                        "tertiary-fixed": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#d93057",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fffbff",
+                        "surface-tint": "#ba1342",
+                        "surface": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "surface-container-high": "#e8e8e8",
+                        "tertiary-container": "#a1645e",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "on-background": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#dee1fa",
+                        "on-primary-fixed": "#400010",
+                        "on-secondary-container": "#5e6177",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#feb4ac",
+                        "secondary-container": "#dbdef8",
+                        "on-surface-variant": "#5a4042",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#6c3833",
+                        "on-secondary-fixed-variant": "#42465a",
+                        "primary-fixed": "#ffdadc",
+                        "outline-variant": "#e2bec0",
+                        "on-secondary-fixed": "#161b2d",
+                        "primary": "#b60f40",
+                        "on-tertiary-fixed": "#360e0b",
+                        "secondary": "#5a5d73",
+                        "on-tertiary-container": "#fffbff",
+                        "on-primary-fixed-variant": "#91002f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-lg": "3rem",
+                        "section-gap": "8rem",
+                        "margin-x": "5vw",
+                        "stack-md": "1.5rem",
+                        "container-max": "1440px",
+                        "gutter": "2rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Manrope"],
+                        "headline-md": ["Noto Serif"],
+                        "body-md": ["Manrope"],
+                        "display-xl": ["Noto Serif"],
+                        "body-lg": ["Manrope"],
+                        "headline-lg": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .ambient-glow {
+            background: radial-gradient(circle at center, rgba(237, 64, 100, 0.08) 0%, transparent 70%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/20">
+<!-- TopNavBar (Shell) -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-2xl border-b border-zinc-100 dark:border-zinc-800/50 shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
+<div class="flex justify-between items-center w-full px-8 md:px-12 py-4">
+<div class="text-2xl font-serif italic tracking-tight text-zinc-900 dark:text-zinc-50" style="">COUTURE</div>
+<div class="hidden md:flex gap-12">
+<a class="text-zinc-500 font-label-caps text-[10px] uppercase font-medium hover:text-rose-500 transition-colors duration-500" href="#" style="">COLLECTIONS</a>
+<a class="text-zinc-500 font-label-caps text-[10px] uppercase font-medium hover:text-rose-500 transition-colors duration-500" href="#" style="">ATELIER</a>
+<a class="text-zinc-500 font-label-caps text-[10px] uppercase font-medium hover:text-rose-500 transition-colors duration-500" href="#" style="">STORY</a>
+<a class="text-zinc-500 font-label-caps text-[10px] uppercase font-medium hover:text-rose-500 transition-colors duration-500" href="#" style="">BOUTIQUES</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-zinc-900 scale-100 active:scale-95 transition-transform duration-300" style="">shopping_bag</button>
+<button class="material-symbols-outlined text-zinc-900 scale-100 active:scale-95 transition-transform duration-300" style="">favorite</button>
+<button class="material-symbols-outlined text-zinc-900 scale-100 active:scale-95 transition-transform duration-300" style="">person</button>
+</div>
+</div>
+</nav>
+<!-- Success Hero Section -->
+<main class="relative min-h-screen pt-32 pb-20 px-margin-x overflow-hidden">
+<!-- Background Atmospheric Element -->
+<div class="absolute top-0 right-0 w-[60vw] h-[60vw] ambient-glow -z-10 translate-x-1/4 -translate-y-1/4"></div>
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col items-center text-center mb-stack-lg">
+<div class="w-16 h-16 rounded-full border border-primary/20 flex items-center justify-center mb-stack-md">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: &quot;wght&quot; 200;">check</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-surface mb-stack-sm" style="">Thank You</h1>
+<p class="font-body-lg text-body-lg text-secondary mb-1" style="">Your order #WF-88291 has been successfully placed.</p>
+<p class="font-label-caps text-label-caps text-zinc-400" style="">A CONFIRMATION EMAIL HAS BEEN SENT TO YOUR INBOX.</p>
+</div>
+<!-- Bento Grid Layout for Order Info -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Details -->
+<div class="lg:col-span-7 space-y-8">
+<div class="glass-panel p-10 border border-white/40 rounded-DEFAULT">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h3 class="font-label-caps text-label-caps mb-6 text-zinc-400" style="">SHIPPING ADDRESS</h3>
+<div class="font-body-md text-on-surface leading-relaxed" style="">
+                                    Julianne V. Sterling<br>
+                                    1104 Fifth Avenue, Apt 4C<br>
+                                    New York, NY 10028<br>
+                                    United States
+                                </div>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps mb-6 text-zinc-400" style="">DELIVERY METHOD</h3>
+<div class="font-body-md text-on-surface" style="">
+                                    Express White Glove<br>
+<span class="text-secondary italic" style="">Scheduled for Tuesday, Oct 24th</span>
+</div>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps mb-6 text-zinc-400" style="">PAYMENT</h3>
+<div class="flex items-center gap-3 font-body-md text-on-surface" style="">
+<span class="material-symbols-outlined text-zinc-400" style="">credit_card</span>
+                                    Visa ending in 4242
+                                </div>
+</div>
+<div class="flex flex-col justify-end">
+<a class="group flex items-center gap-2 text-primary font-label-caps text-label-caps" href="#" style="">
+                                    TRACK YOUR ORDER 
+                                    <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1" style="">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Asymmetric Graphic Section -->
+<div class="relative h-96 overflow-hidden rounded-DEFAULT group">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="High-end fashion editorial shot of a luxurious fabric draped over a minimalist chair in a sunlit Parisian studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1jcW4zCWS3L4PvSv39EqEQyPxR_sug6qoCptvv46oW1prNKyZUZ-u7JE_VTGIMotz7-pOiPFT64A9NpGwcKNx2iZyoKpVVIt1viawuh55XEmdqhbe1j1a1XLYbPQR04SiSU3DrUWmb2KdUryvJbjDmGctrg26XUWn8uZkw_4iyxCkwqpIzGK4m3bqr9KjF89vXyq8jvOID4uEGpUJYS1oTs5y2K6o-j1pFOGXxOdqp6tsQDDdjUetCquFXhA0yJXFhuPURAmms_I" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent flex flex-col justify-end p-10">
+<span class="font-label-caps text-white mb-2" style="">EXPERIENCE COUTURE</span>
+<h2 class="font-headline-lg text-white text-headline-lg italic" style="">The art of fine tailoring.</h2>
+</div>
+</div>
+</div>
+<!-- Right Column: Itemized Summary -->
+<div class="lg:col-span-5">
+<div class="bg-white border border-zinc-100 p-10 rounded-DEFAULT sticky top-32">
+<h3 class="font-label-caps text-label-caps mb-10 text-zinc-400 pb-4 border-b border-zinc-50" style="">ORDER SUMMARY</h3>
+<div class="space-y-10 mb-12">
+<!-- Item 1 -->
+<div class="flex gap-6">
+<div class="w-24 h-32 bg-zinc-50 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Detailed close up of The Crimson Siren dress with intricate silk texture and vibrant red hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBArNiJH2P-MBG8VVjHCkirLOHytxAPFHezysVopEZzCykNBQIUKf2yYYaD1yjisn8j1l0QHWiGKI-cKaaCUZ7inMmr1K4BdSuyx2qnR3togrv96cKcq65tQzqb0AIrZONvNmPz71oZe-wQ_VNrUeO7t7EPEIvTEz653L3VwCjLblm-G_C2_jlGvU1DZ17CZlTPBLsF52VBwYTF5vtYdxqdIfV3AqTYBPUt2q6gGTOfowcEw4GXeiwYOA1mbFF3htHidYv_XYzULFA" style="">
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<h4 class="font-headline-md text-body-lg mb-1 italic" style="">The Crimson Siren</h4>
+<p class="font-label-caps text-[10px] text-secondary" style="">SIZE: IT 40 | QTY: 1</p>
+</div>
+<span class="font-body-md text-on-surface" style="">$2,450.00</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-6">
+<div class="w-24 h-32 bg-zinc-50 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Macro photography of a Gilded Petal Brooch with fine gold filigree and delicate gemstone accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0XQreZkSEj9ejcTml1rWjTBGnfNnf5PkgJD7SyoJwStExW4r3uSt7nDPfLq2JuYsRktAyMINp0FqK5rWApGqtsxx0mRQG1mE8YixijbC62UWqtVNdshV6fZL5AlOwEiNyWXqQyVod_4CX2kubHa2sIO_OytYlGntekScPrHBeP06VfTyMZInAdJ57NqhtEYLhR2JmknuW8WovXJZ2RIChREw4kr5zNiTtRNxI-mKrCj4BPV9b0WWUJNfIKN1Kp2bsgZbJ85rbQZc" style="">
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<h4 class="font-headline-md text-body-lg mb-1 italic" style="">Gilded Petal Brooch</h4>
+<p class="font-label-caps text-[10px] text-secondary" style="">COLLECTION: ATELIER | QTY: 1</p>
+</div>
+<span class="font-body-md text-on-surface" style="">$890.00</span>
+</div>
+</div>
+</div>
+<!-- Calculations -->
+<div class="space-y-4 pt-8 border-t border-zinc-50">
+<div class="flex justify-between font-body-md text-secondary">
+<span class="" style="">Subtotal</span>
+<span class="" style="">$3,340.00</span>
+</div>
+<div class="flex justify-between font-body-md text-secondary">
+<span class="" style="">Shipping</span>
+<span class="uppercase tracking-widest text-[11px]" style="">Complimentary</span>
+</div>
+<div class="flex justify-between font-body-md text-secondary">
+<span class="" style="">Taxes</span>
+<span class="" style="">$25.00</span>
+</div>
+<div class="flex justify-between items-end pt-6">
+<span class="font-label-caps text-label-caps" style="">TOTAL</span>
+<span class="font-headline-lg text-primary text-3xl" style="">$3,365.00</span>
+</div>
+</div>
+<div class="mt-12 space-y-4">
+<button class="w-full py-5 bg-[#ED4064] text-white font-label-caps text-label-caps tracking-[0.2em] hover:brightness-110 active:scale-[0.98] transition-all" style="">
+                                CONTINUE SHOPPING
+                            </button>
+<p class="text-center text-[10px] font-label-caps text-zinc-400 pt-4 leading-relaxed" style="">
+                                NEED ASSISTANCE? CONTACT OUR CONCIERGE AT<br>
+<span class="text-on-surface underline decoration-zinc-200" style="">CONCIERGE@DIGITALCOUTURE.COM</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shell) -->
+<footer class="w-full py-16 px-12 mt-20 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto">
+<div class="text-lg font-serif italic text-zinc-800 dark:text-zinc-200" style="">COUTURE</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-caps text-[9px] uppercase tracking-widest text-zinc-400 hover:text-rose-500 underline-offset-4 underline transition-opacity" href="#" style="">Privacy Policy</a>
+<a class="font-label-caps text-[9px] uppercase tracking-widest text-zinc-400 hover:text-rose-500 underline-offset-4 underline transition-opacity" href="#" style="">Terms of Service</a>
+<a class="font-label-caps text-[9px] uppercase tracking-widest text-zinc-400 hover:text-rose-500 underline-offset-4 underline transition-opacity" href="#" style="">Sustainability</a>
+<a class="font-label-caps text-[9px] uppercase tracking-widest text-zinc-400 hover:text-rose-500 underline-offset-4 underline transition-opacity" href="#" style="">Care Guide</a>
+</div>
+<div class="font-label-caps text-[9px] uppercase tracking-widest text-zinc-400 text-center md:text-right" style="">
+                © 2026 DIGITAL COUTURE. ELEGANCE IN EACH FABRIC.
+            </div>
+</div>
+</footer>
+</body></html>

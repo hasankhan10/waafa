@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WAAFA - Atelier Overview</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#83faaf",
+                    "secondary": "#5f5e5e",
+                    "inverse-on-surface": "#f2f0ef",
+                    "surface-variant": "#e4e2e1",
+                    "on-surface-variant": "#5a4042",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#66dd95",
+                    "on-primary-container": "#fffbff",
+                    "surface-tint": "#ba1342",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#00210f",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#e4e2e1",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "surface-container-high": "#e9e8e7",
+                    "on-error-container": "#93000a",
+                    "primary": "#b60f40",
+                    "surface": "#fbf9f8",
+                    "on-surface": "#1b1c1b",
+                    "tertiary": "#006a3b",
+                    "inverse-surface": "#303030",
+                    "surface-container-highest": "#e4e2e1",
+                    "tertiary-container": "#00864c",
+                    "secondary-container": "#e4e2e1",
+                    "on-tertiary-container": "#f6fff4",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "background": "#fbf9f8",
+                    "on-tertiary-fixed-variant": "#00522d",
+                    "primary-fixed": "#ffdadc",
+                    "inverse-primary": "#ffb2b9",
+                    "outline-variant": "#e2bec0",
+                    "on-background": "#1b1c1b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container": "#efedec",
+                    "on-primary-fixed-variant": "#91002f",
+                    "on-secondary-fixed-variant": "#474747",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-primary-fixed": "#400010",
+                    "on-secondary-container": "#656464",
+                    "surface-dim": "#dbdad9",
+                    "on-primary": "#ffffff",
+                    "outline": "#8e6f72",
+                    "primary-container": "#d93057",
+                    "surface-container-low": "#f5f3f2",
+                    "surface-bright": "#fbf9f8",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Noto Serif"
+                    ],
+                    "display": [
+                            "Noto Serif"
+                    ],
+                    "body": [
+                            "Inter"
+                    ],
+                    "label": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {}
+    },
+        },
+      }
+    </script>
+<style>
+        /* Ambient Shadow Utility class based on design system */
+        .ambient-shadow {
+            box-shadow: 0 20px 40px rgba(27, 28, 27, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- Shared Component: SideNavBar -->
+<nav class="bg-stone-100 dark:bg-stone-900 rounded-none w-64 h-full fixed left-0 top-0 flex flex-col border-r border-stone-200/20 dark:border-stone-800/20 pt-10 pb-6 z-50">
+<!-- Header -->
+<div class="px-8 mb-12">
+<h1 class="font-['Noto_Serif'] text-3xl font-light tracking-[0.2em] text-stone-900 dark:text-stone-50 uppercase">WAAFA</h1>
+<p class="font-['Inter'] text-sm tracking-wide text-rose-800 dark:text-rose-400 mt-2">The Digital Atelier</p>
+</div>
+<!-- Navigation Links -->
+<ul class="flex-1 flex flex-col gap-2 font-['Inter'] text-sm tracking-wide">
+<!-- Active Tab: Atelier Overview -->
+<li>
+<a class="flex items-center gap-4 text-rose-800 dark:text-rose-400 border-l-[3px] border-rose-800 dark:border-rose-400 pl-6 py-3 bg-stone-200/50 dark:bg-stone-800/50 ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard_customize</span>
+                    Atelier Overview
+                </a>
+</li>
+<!-- Inactive Tabs -->
+<li>
+<a class="flex items-center gap-4 text-stone-500 dark:text-stone-400 pl-[27px] py-3 hover:bg-stone-200/30 dark:hover:bg-stone-800/30 transition-colors ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined">auto_awesome_motion</span>
+                    Collections
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-stone-500 dark:text-stone-400 pl-[27px] py-3 hover:bg-stone-200/30 dark:hover:bg-stone-800/30 transition-colors ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined">ink_highlighter</span>
+                    Orders
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-stone-500 dark:text-stone-400 pl-[27px] py-3 hover:bg-stone-200/30 dark:hover:bg-stone-800/30 transition-colors ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined">loyalty</span>
+                    WAAFA Circle
+                </a>
+</li>
+</ul>
+<!-- Bottom Tab -->
+<div class="mt-auto">
+<a class="flex items-center gap-4 text-stone-500 dark:text-stone-400 pl-[27px] py-3 hover:bg-stone-200/30 dark:hover:bg-stone-800/30 transition-colors ease-in-out duration-200 font-['Inter'] text-sm tracking-wide" href="#">
+<span class="material-symbols-outlined">tune</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 p-16 max-w-7xl">
+<!-- Welcome Header -->
+<header class="mb-16">
+<p class="font-label text-sm uppercase tracking-widest text-secondary mb-3">April 24, 2024</p>
+<h2 class="font-headline text-5xl text-on-surface">Good morning, Manager.</h2>
+</header>
+<!-- Key Metrics (The Ledger) -->
+<section class="grid grid-cols-4 gap-6 mb-12">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/15 rounded-sm ambient-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-surface-container-low to-transparent opacity-50 pointer-events-none"></div>
+<h3 class="font-label text-xs uppercase tracking-widest text-secondary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">account_balance_wallet</span>
+                    Total Revenue
+                </h3>
+<p class="font-headline text-4xl text-on-surface tracking-tight">€142,500</p>
+<p class="font-label text-xs text-tertiary mt-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+                    +12.5% vs last month
+                </p>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/15 rounded-sm ambient-shadow">
+<h3 class="font-label text-xs uppercase tracking-widest text-secondary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+                    Active Orders
+                </h3>
+<p class="font-headline text-4xl text-on-surface tracking-tight">84</p>
+<p class="font-label text-xs text-secondary mt-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                    12 awaiting fulfillment
+                </p>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/15 rounded-sm ambient-shadow">
+<h3 class="font-label text-xs uppercase tracking-widest text-secondary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shelves</span>
+                    Inventory Value
+                </h3>
+<p class="font-headline text-4xl text-on-surface tracking-tight">€418,200</p>
+<p class="font-label text-xs text-primary mt-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                    3 items low stock
+                </p>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/15 rounded-sm ambient-shadow">
+<h3 class="font-label text-xs uppercase tracking-widest text-secondary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">group_add</span>
+                    New Circle Members
+                </h3>
+<p class="font-headline text-4xl text-on-surface tracking-tight">27</p>
+<p class="font-label text-xs text-tertiary mt-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                    Steady growth
+                </p>
+</div>
+</section>
+<!-- Revenue Trends Chart Area -->
+<section class="bg-surface-container-lowest border border-outline-variant/15 rounded-sm ambient-shadow mb-12 overflow-hidden">
+<div class="p-8 border-b border-outline-variant/15 flex justify-between items-end">
+<div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">Revenue Overview</h3>
+<p class="font-label text-sm text-secondary">YTD Performance across all collections</p>
+</div>
+<div class="flex gap-4 font-label text-xs">
+<span class="flex items-center gap-2 text-on-surface"><div class="w-2 h-2 bg-primary rounded-full"></div> Haute Couture</span>
+<span class="flex items-center gap-2 text-secondary"><div class="w-2 h-2 bg-surface-dim rounded-full"></div> Pret-a-Porter</span>
+</div>
+</div>
+<div class="h-80 w-full relative p-8">
+<!-- Bespoke Analytics Visualization (SVG Area Chart simulation) -->
+<svg class="w-full h-full preserve-aspect-ratio-none" viewbox="0 0 1000 300">
+<!-- Grid Lines -->
+<line stroke="#e4e2e1" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="250" y2="250"></line>
+<line stroke="#e4e2e1" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="#e4e2e1" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+<!-- Gradient Def -->
+<defs>
+<lineargradient id="primaryGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#b60f40" stop-opacity="0.15"></stop>
+<stop offset="100%" stop-color="#b60f40" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Pret-a-Porter Line (Secondary) -->
+<path d="M0,220 C100,210 200,240 300,200 C400,160 500,180 600,150 C700,120 800,140 900,130 L1000,120" fill="none" stroke="#dbdad9" stroke-width="1.5"></path>
+<!-- Haute Couture Area & Line (Primary) -->
+<path d="M0,280 C150,250 250,150 400,180 C550,210 650,80 800,90 C900,100 950,40 1000,30 L1000,300 L0,300 Z" fill="url(#primaryGradient)"></path>
+<path d="M0,280 C150,250 250,150 400,180 C550,210 650,80 800,90 C900,100 950,40 1000,30" fill="none" stroke="#b60f40" stroke-width="2"></path>
+<!-- Data Point Marker -->
+<circle cx="800" cy="90" fill="#fbf9f8" r="4" stroke="#b60f40" stroke-width="2"></circle>
+</svg>
+</div>
+</section>
+<!-- Two Column Layout for Lists -->
+<section class="grid grid-cols-2 gap-12">
+<!-- Top Selling Pieces -->
+<div>
+<h3 class="font-headline text-2xl text-on-surface mb-8">Top Performing Assets</h3>
+<div class="flex flex-col gap-4">
+<!-- Row 1 -->
+<div class="flex items-center gap-6 p-4 rounded-sm hover:bg-surface-container-high transition-colors duration-300 cursor-pointer">
+<img alt="Silk evening gown draped on mannequin" class="w-16 h-20 object-cover object-center grayscale hover:grayscale-0 transition-all duration-500 rounded-sm" data-alt="close-up of luxurious crimson silk fabric draping elegantly in soft warm studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVn2TtjP4hgJHAI2jbNJheduqbrmGzIs9298Qf7uqS8UqKuVrHRVUbmBX6jsQfwlyvX8Qd3JgD--AqYv_M7T598Nz_7nq5kTukDQq4A5x5IrfKITrowHTN6dXy8gcFRwUD9lsdWtBrjw0-TtMvG0y88iYAr71FpPaIrTfjEHvnMGNs97ajR3FHD6NgezdznFlzDkS41Ebnn_d3gQMISFBFRbiX2sct99sIWtefrLZW5b8uUam26GyaxFNaBzNU3N4MvkEAEZ5UmNo"/>
+<div class="flex-1">
+<h4 class="font-label font-semibold text-sm text-on-surface">The Crimson Drape Gown</h4>
+<p class="font-label text-xs text-secondary mt-1 tracking-widest">SKU: HC-992A</p>
+</div>
+<div class="text-right">
+<p class="font-body text-sm text-on-surface">€12,400</p>
+<p class="font-label text-xs text-tertiary mt-1">4 Sold</p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center gap-6 p-4 rounded-sm hover:bg-surface-container-high transition-colors duration-300 cursor-pointer">
+<img alt="Tailored black blazer detail" class="w-16 h-20 object-cover object-center grayscale hover:grayscale-0 transition-all duration-500 rounded-sm" data-alt="close-up detail of structured black blazer shoulder with sharp tailoring and subtle texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnIrYgLiHPp3RiGfEv-XgjQd3JOWX_uXT9l9HrjUhKQmZpzaRnlu4fg5KdGtCRf0BbGQajDOUAKrCEh3Etonxn_bmJwNFYZokPIms3VHHlHt3EVbdQ6AmwZrY1HP60SRac5bS8DbDtPmkWISRkIUwUthlBLApQDT92kIQ90qsSsYRxk06jP8eh0cX-9tHLD3ta6uaC2utWWYoWV-5t8Y3Ec4QiqaRVpR2XbI4DosaJDzqOqGpFEcS6HkGW366GsjKeiTMN1WvTj3g"/>
+<div class="flex-1">
+<h4 class="font-label font-semibold text-sm text-on-surface">Structured Noir Blazer</h4>
+<p class="font-label text-xs text-secondary mt-1 tracking-widest">SKU: PP-104B</p>
+</div>
+<div class="text-right">
+<p class="font-body text-sm text-on-surface">€2,850</p>
+<p class="font-label text-xs text-tertiary mt-1">12 Sold</p>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center gap-6 p-4 rounded-sm hover:bg-surface-container-high transition-colors duration-300 cursor-pointer">
+<img alt="Detailed embroidery on fabric" class="w-16 h-20 object-cover object-center grayscale hover:grayscale-0 transition-all duration-500 rounded-sm" data-alt="macro shot of intricate metallic gold embroidery on sheer cream tulle fabric" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ55zQw_MoV0gvwvDLwTrQeUlwvmBi3KyqpPf-feeAX6-OkDEOV-9rmYl7cdeCsPmurnzXkGwjOBsuBkU3vUmk3ypBRZUuX6Q45FakHTzpJUCAKqyDNzuj_bzOHltsFaDwpW3PcPFn_S7XxWSQEUm0e5bRDtRKXDhsEsKalSPEKo1igE78NuMbam703rowkB8sFEpWOmz3GBfUzizZeMbrjkHCd68yAbnU-6_xpvPm0KOPRRkVb6J7UCAvl9VUEceV1o5KPu-uJfY"/>
+<div class="flex-1">
+<h4 class="font-label font-semibold text-sm text-on-surface">Gilded Tulle Veil</h4>
+<p class="font-label text-xs text-secondary mt-1 tracking-widest">SKU: AC-044V</p>
+</div>
+<div class="text-right">
+<p class="font-body text-sm text-on-surface">€1,100</p>
+<p class="font-label text-xs text-tertiary mt-1">8 Sold</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity (The Ledger List) -->
+<div>
+<h3 class="font-headline text-2xl text-on-surface mb-8">Atelier Ledger</h3>
+<div class="flex flex-col">
+<!-- Event 1 -->
+<div class="flex gap-6 py-5 border-b border-outline-variant/15 last:border-0 hover:bg-surface-container-low px-4 -mx-4 transition-colors">
+<div class="w-12 text-center mt-1">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div>
+<p class="font-label text-sm text-on-surface">Order <span class="font-mono bg-surface-dim px-1 py-0.5 rounded-sm">#8820</span> fulfilled and dispatched.</p>
+<p class="font-label text-xs text-secondary mt-2">Client: E. Rothschild • 10 mins ago</p>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex gap-6 py-5 border-b border-outline-variant/15 last:border-0 hover:bg-surface-container-low px-4 -mx-4 transition-colors">
+<div class="w-12 text-center mt-1">
+<span class="material-symbols-outlined text-secondary">person_add</span>
+</div>
+<div>
+<p class="font-label text-sm text-on-surface">New WAAFA Circle member application received.</p>
+<p class="font-label text-xs text-secondary mt-2">Tier: Platinum • 1 hour ago</p>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex gap-6 py-5 border-b border-outline-variant/15 last:border-0 hover:bg-surface-container-low px-4 -mx-4 transition-colors">
+<div class="w-12 text-center mt-1">
+<span class="material-symbols-outlined text-primary">error</span>
+</div>
+<div>
+<p class="font-label text-sm text-on-surface">Inventory alert: <span class="font-semibold">Structured Noir Blazer</span> low stock.</p>
+<p class="font-label text-xs text-secondary mt-2">Only 2 remaining in size 38 • 3 hours ago</p>
+</div>
+</div>
+<!-- Event 4 -->
+<div class="flex gap-6 py-5 border-b border-outline-variant/15 last:border-0 hover:bg-surface-container-low px-4 -mx-4 transition-colors">
+<div class="w-12 text-center mt-1">
+<span class="material-symbols-outlined text-secondary">inventory_2</span>
+</div>
+<div>
+<p class="font-label text-sm text-on-surface">Shipment of silk chiffon arrived from Milan.</p>
+<p class="font-label text-xs text-secondary mt-2">Logistics • Yesterday, 14:30</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>
