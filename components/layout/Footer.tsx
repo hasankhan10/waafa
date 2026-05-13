@@ -31,16 +31,10 @@ export default function Footer() {
             Terms of Service
           </Link>
           <Link
-            href="/shipping"
+            href="/delivery"
             className="font-serif text-zinc-500 dark:text-zinc-400 uppercase tracking-widest text-[10px] md:text-xs hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300"
           >
-            Shipping & Returns
-          </Link>
-          <Link
-            href="/sustainability"
-            className="font-serif text-zinc-500 dark:text-zinc-400 uppercase tracking-widest text-[10px] md:text-xs hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300"
-          >
-            Sustainability
+            Delivery & Returns
           </Link>
           <Link
             href="/contact"
@@ -49,6 +43,12 @@ export default function Footer() {
             Contact Us
           </Link>
         </div>
+      </div>
+      
+      <div className="mt-8 pt-8 border-t border-zinc-100 dark:border-zinc-800 text-center">
+        <p className="font-sans text-[9px] uppercase tracking-[0.3em] text-zinc-300">
+          Developed and maintained by <a href="https://stovamedia.in" target="_blank" rel="noopener noreferrer" className="hover:text-[#ED4064] transition-colors">Stova Media</a>
+        </p>
       </div>
     </footer>
   );

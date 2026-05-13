@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Serif, Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Toaster } from "sonner";
 
 const notoSerif = Noto_Serif({
   variable: "--font-noto-serif",
@@ -38,6 +39,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <SmoothScroll>{children}</SmoothScroll>
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );

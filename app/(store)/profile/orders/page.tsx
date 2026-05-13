@@ -1,25 +1,44 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
 
 export default function ProfileOrdersPage() {
+  const mockOrders = [
+    { id: "#WF-88291", date: "Oct 20, 2026", total: "₹85,000", status: "IN PRODUCTION", item: "The Crimson Cascade" },
+    { id: "#WF-88285", date: "Aug 12, 2026", total: "₹42,000", status: "DELIVERED", item: "Midnight Velvet Slip" },
+    { id: "#WF-88210", date: "Jan 15, 2026", total: "₹55,000", status: "DELIVERED", item: "Emerald Silk Gown" }
+  ];
+
   return (
-    <div className="max-w-[1440px] mx-auto px-[5vw] pt-12 pb-32 min-h-[70vh]">
-      <div className="mb-16">
-        <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-2">Order History</h1>
+    <div className="space-y-12">
+      <div className="border-b border-zinc-100 pb-8">
+        <h1 className="font-serif text-4xl text-zinc-900 italic tracking-tight">My Orders</h1>
+        <p className="text-[10px] font-sans uppercase tracking-[0.3em] text-zinc-400 mt-2">Track and manage your studio purchases</p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-        <div className="lg:col-span-1 space-y-2">
-          <Link href="/profile" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">OVERVIEW</Link>
-          <Link href="/profile/orders" className="block py-3 px-4 border-l-2 border-primary text-primary font-label-caps text-label-caps bg-surface-variant/30">ORDER HISTORY</Link>
-          <Link href="/profile/wishlist" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">WISHLIST</Link>
-          <Link href="/profile/settings" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">SETTINGS</Link>
-        </div>
-        <div className="lg:col-span-3">
-          <div className="bg-surface-container-low p-12 text-center border border-surface-variant/50">
-            <span className="material-symbols-outlined text-4xl text-secondary mb-4">inventory_2</span>
-            <p className="font-body-md text-secondary">You have no past orders.</p>
+
+      <div className="space-y-6">
+        {mockOrders.map((order, i) => (
+          <div key={i} className="bg-white p-8 border border-zinc-100 shadow-sm hover:shadow-md transition-shadow group">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
+              <div className="space-y-2">
+                <p className="font-sans text-[9px] uppercase tracking-[0.3em] text-zinc-400">{order.id} • {order.date}</p>
+                <h4 className="font-serif text-xl text-zinc-900 group-hover:text-[#ED4064] transition-colors">{order.item}</h4>
+              </div>
+              <div className="flex flex-col md:items-end justify-center gap-2">
+                <p className="font-sans text-sm font-semibold text-zinc-900">{order.total}</p>
+                <span className={`text-[9px] font-sans uppercase tracking-[0.2em] px-3 py-1.5 border ${
+                  order.status === 'DELIVERED' ? 'bg-green-50 text-green-600 border-green-100' : 'bg-zinc-50 text-zinc-500 border-zinc-100'
+                }`}>
+                  {order.status}
+                </span>
+              </div>
+            </div>
+            <div className="mt-6 pt-6 border-t border-zinc-50 flex gap-6">
+              <button className="text-[10px] font-sans uppercase tracking-widest text-[#ED4064] hover:underline underline-offset-8">Track Package</button>
+              <button className="text-[10px] font-sans uppercase tracking-widest text-zinc-400 hover:text-zinc-600">Download Invoice</button>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );

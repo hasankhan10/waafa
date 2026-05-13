@@ -52,10 +52,10 @@ export default function HomePage() {
             The Art of Elegance
           </h1>
           <p className="font-body-lg text-body-lg text-white/90 mb-stack-lg max-w-2xl drop-shadow-md">
-            Discover our latest collection of handcrafted gowns, where minimal silhouette meets striking vibrant detail.
+            Discover our latest categories of handcrafted gowns, where minimal silhouette meets striking vibrant detail.
           </p>
-          <Button href="/collections" variant="primary">
-            Explore Collection
+          <Button href="/categories" variant="primary">
+            Explore Categories
           </Button>
         </div>
       </section>
@@ -152,15 +152,15 @@ export default function HomePage() {
           
           {/* Text Side */}
           <div className="flex flex-col justify-center">
-            <span className="font-label-caps text-label-caps text-primary mb-4 tracking-widest uppercase">The Atelier</span>
-            <h2 className="font-headline-lg text-headline-lg text-on-surface mb-6">Mastery in Every Stitch</h2>
-            <p className="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl">
-              At WAAFA, we believe that true luxury lies in the details. Each garment is meticulously crafted in our atelier, marrying traditional haute couture techniques with modern, architectural silhouettes. We source only the finest fabrics to ensure that "Elegance in each fabric" is not just a promise, but a tactile reality.
+            <span className="font-label-caps text-label-caps text-[#ED4064] mb-4 tracking-widest uppercase">Our Philosophy</span>
+            <h2 className="font-headline-lg text-headline-lg text-zinc-900 mb-6 font-serif italic">Perfecting the Silhouette</h2>
+            <p className="font-body-lg text-lg text-zinc-600 mb-8 max-w-xl leading-relaxed">
+              At WAAFA, we believe that luxury should be effortless. Our categories are designed for the modern woman who values both timeless style and exceptional quality. Every piece is a result of meticulous design and the finest fabric selection, ensuring you feel as elegant as you look.
             </p>
             <div>
-              <Button href="/about" variant="secondary">
-                Discover Our Heritage
-              </Button>
+              <button className="px-10 py-4 bg-zinc-900 text-white text-[11px] font-sans tracking-[0.3em] uppercase hover:bg-zinc-800 transition-all">
+                Browse Categories
+              </button>
             </div>
           </div>
         </div>

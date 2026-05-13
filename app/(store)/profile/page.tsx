@@ -1,68 +1,87 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 
 export default function ProfilePage() {
+  // MOCK DATA FOR UI DEVELOPMENT
+  const mockUser = {
+    name: "Aria Montgomery",
+    email: "aria@example.com",
+    memberSince: "2024"
+  };
+
+  const mockOrders = [
+    { id: "#WF-88291", date: "Oct 20, 2026", total: "₹85,000", status: "IN PRODUCTION", item: "The Crimson Cascade" },
+    { id: "#WF-88285", date: "Aug 12, 2026", total: "₹42,000", status: "DELIVERED", item: "Midnight Velvet Slip" }
+  ];
+
   return (
-    <div className="max-w-[1440px] mx-auto px-[5vw] pt-12 pb-32 min-h-screen">
-      <div className="mb-16">
-        <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-2">Welcome, Julianne.</h1>
-        <p className="font-label-caps text-label-caps text-secondary opacity-60">WAAFA CIRCLE: PLATINUM MEMBER</p>
+    <div className="space-y-20">
+      {/* Profile Header */}
+      <div className="mb-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <div>
+          <h1 className="font-serif text-6xl text-zinc-900 italic tracking-tight leading-tight">
+            Welcome, {mockUser.name.split(' ')[0]}.
+          </h1>
+          <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-zinc-400 mt-4">
+            {mockUser.email}
+          </p>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-        {/* Navigation Sidebar */}
-        <div className="lg:col-span-1 space-y-2">
-          <Link href="/profile" className="block py-3 px-4 border-l-2 border-primary text-primary font-label-caps text-label-caps bg-surface-variant/30">
-            OVERVIEW
-          </Link>
-          <Link href="/profile/orders" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">
-            ORDER HISTORY
-          </Link>
-          <Link href="/profile/wishlist" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">
-            WISHLIST
-          </Link>
-          <Link href="/profile/settings" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">
-            SETTINGS
-          </Link>
+      {/* Recent Orders */}
+      <section>
+        <div className="flex justify-between items-end mb-10 border-b border-zinc-100 pb-6">
+          <h3 className="font-serif text-2xl italic text-zinc-900">My Recent Orders</h3>
+          <Link href="/profile/orders" className="text-[10px] font-sans uppercase tracking-widest text-zinc-400 hover:text-[#ED4064]">View All</Link>
         </div>
-
-        {/* Content Area */}
-        <div className="lg:col-span-3 space-y-12">
-          {/* Recent Orders */}
-          <div>
-            <h3 className="font-headline-md text-headline-md mb-6 border-b border-surface-variant pb-4">Recent Orders</h3>
-            <div className="space-y-6">
-              <div className="bg-surface-container-low p-6 rounded-sm border border-surface-variant/50">
-                <div className="flex justify-between items-center mb-4">
-                  <div>
-                    <p className="font-label-caps text-[10px] text-secondary">ORDER #WF-88291</p>
-                    <p className="font-body-md text-on-surface">Placed on Oct 20, 2026</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-body-md font-semibold text-primary">₹3,365.00</p>
-                    <span className="font-label-caps text-[10px] bg-primary/10 text-primary px-2 py-1 rounded-sm">IN TRANSIT</span>
-                  </div>
+        
+        <div className="space-y-6">
+          {mockOrders.map((order, i) => (
+            <div key={i} className="bg-white p-8 border border-zinc-100 shadow-sm hover:shadow-md transition-shadow group">
+              <div className="flex flex-col md:flex-row justify-between gap-6">
+                <div className="space-y-2">
+                  <p className="font-sans text-[9px] uppercase tracking-[0.3em] text-zinc-400">{order.id} • {order.date}</p>
+                  <h4 className="font-serif text-xl text-zinc-900 group-hover:text-[#ED4064] transition-colors">{order.item}</h4>
                 </div>
-                <Link href="/order-confirm" className="text-sm underline text-secondary hover:text-primary transition-colors">View Details</Link>
+                <div className="flex flex-col md:items-end justify-center gap-2">
+                  <p className="font-sans text-sm font-semibold text-zinc-900">{order.total}</p>
+                  <span className="text-[9px] font-sans uppercase tracking-[0.2em] px-3 py-1.5 bg-zinc-50 text-zinc-500 border border-zinc-100">
+                    {order.status}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-          
-          {/* Addresses */}
-          <div>
-            <h3 className="font-headline-md text-headline-md mb-6 border-b border-surface-variant pb-4">Default Address</h3>
-            <div className="bg-surface-container-low p-6 rounded-sm border border-surface-variant/50">
-              <div className="font-body-md text-on-surface leading-relaxed">
-                Julianne V. Sterling<br />
-                1104 Fifth Avenue, Apt 4C<br />
-                New York, NY 10028<br />
-                United States
-              </div>
-              <button className="mt-4 text-sm underline text-secondary hover:text-primary transition-colors">Edit Address</button>
-            </div>
-          </div>
+          ))}
         </div>
+      </section>
+      
+      {/* Profile Details */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <section className="bg-white p-10 border border-zinc-100 shadow-sm">
+          <h3 className="text-[10px] font-sans uppercase tracking-[0.3em] text-zinc-400 mb-6">Delivery Address</h3>
+          <div className="font-serif text-lg text-zinc-700 leading-relaxed italic">
+            Aria Montgomery<br />
+            1104 Fifth Avenue, Apt 4C<br />
+            New York, NY 10028<br />
+            United States
+          </div>
+          <button className="mt-8 text-[10px] font-sans uppercase tracking-widest text-[#ED4064] hover:underline decoration-[#ED4064] underline-offset-8">
+            Edit Details
+          </button>
+        </section>
+
+        <section className="bg-white p-10 border border-zinc-100 shadow-sm">
+          <h3 className="text-[10px] font-sans uppercase tracking-[0.3em] text-zinc-400 mb-6">Studio Credit</h3>
+          <div className="font-serif text-3xl text-zinc-900 italic">
+            ₹12,500.00
+          </div>
+          <p className="text-[9px] font-sans uppercase tracking-widest text-zinc-400 mt-2">Available for next order</p>
+          <button className="mt-8 text-[10px] font-sans uppercase tracking-widest text-[#ED4064] hover:underline decoration-[#ED4064] underline-offset-8">
+            Apply to Order
+          </button>
+        </section>
       </div>
     </div>
   );

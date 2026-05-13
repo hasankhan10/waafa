@@ -28,9 +28,9 @@ export default function CheckoutPage() {
             </div>
           </section>
 
-          {/* Shipping Address */}
+          {/* Delivery Address */}
           <section>
-            <h2 className="font-headline-md text-2xl text-on-surface mb-6 pb-2 border-b border-surface-variant">2. Shipping Address</h2>
+            <h2 className="font-headline-md text-2xl text-on-surface mb-6 pb-2 border-b border-surface-variant">2. Delivery Address</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Input placeholder="First Name" />
               <Input placeholder="Last Name" />
@@ -41,8 +41,8 @@ export default function CheckoutPage() {
                 <Input placeholder="Apartment, suite, etc. (optional)" />
               </div>
               <Input placeholder="City" />
-              <Input placeholder="State / Province" />
-              <Input placeholder="Postal Code" />
+              <Input placeholder="State" />
+              <Input placeholder="Pincode" />
               <select className="w-full h-12 bg-transparent border-b border-outline/30 text-on-surface focus:outline-none focus:border-primary font-body-md transition-colors appearance-none rounded-none cursor-pointer">
                 <option value="in">India</option>
                 <option value="us">United States</option>
@@ -95,8 +95,8 @@ export default function CheckoutPage() {
           </section>
 
           <Link href="/order-confirm" className="block w-full">
-            <button className="w-full bg-primary text-white font-label-caps text-label-caps py-5 tracking-[0.2em] uppercase hover:bg-primary-container transition-all">
-              Complete Order
+            <button className="w-full bg-[#ED4064] text-white font-sans text-[11px] font-semibold tracking-[0.2em] py-5 uppercase hover:bg-[#D63056] transition-all">
+              Proceed to Pay
             </button>
           </Link>
 
@@ -141,11 +141,11 @@ export default function CheckoutPage() {
                 <span>₹6,050.00</span>
               </div>
               <div className="flex justify-between font-body-md text-sm text-secondary">
-                <span>Shipping</span>
+                <span>Delivery</span>
                 <span>Calculated at next step</span>
               </div>
               <div className="flex justify-between font-body-md text-sm text-secondary">
-                <span>Estimated Taxes</span>
+                <span>GST (Estimated)</span>
                 <span>₹450.00</span>
               </div>
             </div>

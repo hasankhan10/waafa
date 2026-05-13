@@ -1,25 +1,21 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
 
 export default function ProfileWishlistPage() {
   return (
-    <div className="max-w-[1440px] mx-auto px-[5vw] pt-12 pb-32 min-h-[70vh]">
-      <div className="mb-16">
-        <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-2">Your Wishlist</h1>
+    <div className="space-y-12">
+      <div className="border-b border-zinc-100 pb-8">
+        <h1 className="font-serif text-4xl text-zinc-900 italic tracking-tight">My Wishlist</h1>
+        <p className="text-[10px] font-sans uppercase tracking-[0.3em] text-zinc-400 mt-2">Pieces you've admired for your collection</p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-        <div className="lg:col-span-1 space-y-2">
-          <Link href="/profile" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">OVERVIEW</Link>
-          <Link href="/profile/orders" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">ORDER HISTORY</Link>
-          <Link href="/profile/wishlist" className="block py-3 px-4 border-l-2 border-primary text-primary font-label-caps text-label-caps bg-surface-variant/30">WISHLIST</Link>
-          <Link href="/profile/settings" className="block py-3 px-4 border-l-2 border-transparent text-secondary hover:text-on-surface hover:bg-surface-variant/20 font-label-caps text-label-caps transition-all">SETTINGS</Link>
-        </div>
-        <div className="lg:col-span-3">
-          <div className="bg-surface-container-low p-12 text-center border border-surface-variant/50">
-            <span className="material-symbols-outlined text-4xl text-secondary mb-4">favorite_border</span>
-            <p className="font-body-md text-secondary">Your wishlist is currently empty.</p>
-          </div>
-        </div>
+
+      <div className="bg-white p-20 text-center border border-zinc-100 shadow-sm">
+        <span className="material-symbols-outlined text-4xl text-zinc-200 mb-4">favorite</span>
+        <p className="font-serif text-lg text-zinc-500 italic">Your curated wishlist is currently empty.</p>
+        <button className="mt-8 bg-zinc-900 text-white px-10 py-4 font-sans text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-zinc-800 transition-all">
+          Explore Collection
+        </button>
       </div>
     </div>
   );

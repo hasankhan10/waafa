@@ -1,11 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { supabase } from "@/lib/supabase";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [profileHref, setProfileHref] = useState("/login");
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        // Check if admin
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('is_admin')
+          .eq('id', user.id)
+          .single();
+        
+        if (profile?.is_admin) {
+          setProfileHref("/admin");
+        } else {
+          setProfileHref("/profile");
+        }
+      } else {
+        setProfileHref("/login");
+      }
+    };
+    checkUser();
+  }, []);
 
   return (
     <>
@@ -22,10 +47,10 @@ export default function Header() {
         {/* Navigation Links (Web) */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
-            href="/collections"
+            href="/categories"
             className="font-serif uppercase text-xs tracking-[0.15em] text-zinc-600 dark:text-zinc-400 hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300"
           >
-            Collections
+            Categories
           </Link>
           <Link
             href="/products"
@@ -83,11 +108,11 @@ export default function Header() {
       >
         <nav className="flex flex-col items-center gap-8 text-center">
           <Link
-            href="/collections"
+            href="/categories"
             className="font-serif uppercase text-lg tracking-[0.2em] text-zinc-900 dark:text-white hover:text-[#ED4064] dark:hover:text-[#ED4064] transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Collections
+            Categories
           </Link>
           <Link
             href="/products"
