@@ -30,7 +30,7 @@ export default function AdminDashboard() {
         // Map recent orders for the table
         const formattedOrders = ordersData.slice(0, 5).map(order => ({
           id: `#WF-${order.id.slice(0, 4).toUpperCase()}`,
-          client: order.profiles?.full_name || "Unknown Customer",
+          client: (order.profiles as any)?.full_name || "Unknown Customer",
           status: order.status === 'delivered' ? 'Delivered' : 
                   order.status === 'dispatched' ? 'Dispatched' : 
                   order.status === 'stitching' ? 'In Stitching' : 'Pending',

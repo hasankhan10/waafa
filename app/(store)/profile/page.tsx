@@ -1,33 +1,80 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
+import { toast } from "sonner";
 
 export default function ProfilePage() {
-  // MOCK DATA FOR UI DEVELOPMENT
-  const mockUser = {
-    name: "Aria Montgomery",
-    email: "aria@example.com",
-    memberSince: "2024"
+  const [profile, setProfile] = useState<any>(null);
+  const [orders, setOrders] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchUserData() {
+      setLoading(true);
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (user) {
+        // 1. Fetch Profile
+        const { data: profileData } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', user.id)
+          .single();
+        
+        if (profileData) setProfile(profileData);
+
+        // 2. Fetch Orders
+        const { data: ordersData } = await supabase
+          .from('orders')
+          .select('*')
+          .eq('customer_id', user.id)
+          .order('created_at', { ascending: false });
+
+        if (ordersData) setOrders(ordersData);
+      }
+      setLoading(false);
+    }
+
+    fetchUserData();
+  }, []);
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Signed out successfully");
+      window.location.href = "/login";
+    }
   };
 
-  const mockOrders = [
-    { id: "#WF-88291", date: "Oct 20, 2026", total: "₹85,000", status: "IN PRODUCTION", item: "The Crimson Cascade" },
-    { id: "#WF-88285", date: "Aug 12, 2026", total: "₹42,000", status: "DELIVERED", item: "Midnight Velvet Slip" }
-  ];
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="font-serif italic text-zinc-300 animate-pulse">Loading your profile...</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-16 animate-in fade-in duration-700">
       {/* Profile Header */}
-      <div className="mb-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-        <div>
-          <h1 className="font-serif text-6xl text-zinc-900 italic tracking-tight leading-tight">
-            Welcome, {mockUser.name.split(' ')[0]}.
-          </h1>
-          <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-zinc-400 mt-4">
-            {mockUser.email}
-          </p>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-zinc-100 pb-12">
+        <div className="space-y-2">
+          <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-[#ED4064]">Welcome back</p>
+          <h2 className="font-serif text-5xl text-zinc-900 italic tracking-tight capitalize">
+            {profile?.full_name || "Valued Customer"}
+          </h2>
+          <p className="font-sans text-sm text-zinc-400">{profile?.email || "No email provided"}</p>
         </div>
+        <button 
+          onClick={handleSignOut}
+          className="px-8 py-3 border border-zinc-200 text-[10px] font-sans uppercase tracking-widest text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 transition-all"
+        >
+          Sign Out
+        </button>
       </div>
 
       {/* Recent Orders */}
@@ -38,50 +85,56 @@ export default function ProfilePage() {
         </div>
         
         <div className="space-y-6">
-          {mockOrders.map((order, i) => (
-            <div key={i} className="bg-white p-8 border border-zinc-100 shadow-sm hover:shadow-md transition-shadow group">
-              <div className="flex flex-col md:flex-row justify-between gap-6">
-                <div className="space-y-2">
-                  <p className="font-sans text-[9px] uppercase tracking-[0.3em] text-zinc-400">{order.id} • {order.date}</p>
-                  <h4 className="font-serif text-xl text-zinc-900 group-hover:text-[#ED4064] transition-colors">{order.item}</h4>
-                </div>
-                <div className="flex flex-col md:items-end justify-center gap-2">
-                  <p className="font-sans text-sm font-semibold text-zinc-900">{order.total}</p>
-                  <span className="text-[9px] font-sans uppercase tracking-[0.2em] px-3 py-1.5 bg-zinc-50 text-zinc-500 border border-zinc-100">
-                    {order.status}
-                  </span>
+          {orders.length === 0 ? (
+            <div className="py-20 text-center bg-zinc-50/50 border border-dashed border-zinc-100">
+              <p className="font-serif italic text-zinc-400">You haven't placed any orders yet.</p>
+              <Link href="/products" className="inline-block mt-4 text-[10px] font-sans uppercase tracking-widest text-[#ED4064] underline underline-offset-4">Start Shopping</Link>
+            </div>
+          ) : (
+            orders.slice(0, 3).map((order, i) => (
+              <div key={i} className="bg-white p-8 border border-zinc-100 shadow-sm hover:shadow-md transition-shadow group">
+                <div className="flex flex-col md:flex-row justify-between gap-6">
+                  <div className="space-y-2">
+                    <p className="font-sans text-[9px] uppercase tracking-[0.3em] text-zinc-400">
+                      #WF-{order.id.slice(0, 8).toUpperCase()} • {new Date(order.created_at).toLocaleDateString()}
+                    </p>
+                    <h4 className="font-serif text-xl text-zinc-900 group-hover:text-[#ED4064] transition-colors uppercase tracking-tight">
+                      Order Processing
+                    </h4>
+                  </div>
+                  <div className="flex flex-col md:items-end justify-center gap-2">
+                    <p className="font-sans text-sm font-semibold text-zinc-900">₹{order.total_amount?.toLocaleString('en-IN')}</p>
+                    <span className={`text-[9px] font-sans uppercase tracking-[0.2em] px-3 py-1.5 border ${
+                      order.status === 'delivered' ? 'bg-green-50 text-green-600 border-green-100' :
+                      order.status === 'stitching' ? 'bg-orange-50 text-orange-600 border-orange-100' :
+                      'bg-zinc-50 text-zinc-500 border-zinc-100'
+                    }`}>
+                      {order.status || "Pending"}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
       
-      {/* Profile Details */}
+      {/* Profile Details Preview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <section className="bg-white p-10 border border-zinc-100 shadow-sm">
-          <h3 className="text-[10px] font-sans uppercase tracking-[0.3em] text-zinc-400 mb-6">Delivery Address</h3>
-          <div className="font-serif text-lg text-zinc-700 leading-relaxed italic">
-            Aria Montgomery<br />
-            1104 Fifth Avenue, Apt 4C<br />
-            New York, NY 10028<br />
-            United States
-          </div>
-          <button className="mt-8 text-[10px] font-sans uppercase tracking-widest text-[#ED4064] hover:underline decoration-[#ED4064] underline-offset-8">
-            Edit Details
-          </button>
-        </section>
-
-        <section className="bg-white p-10 border border-zinc-100 shadow-sm">
-          <h3 className="text-[10px] font-sans uppercase tracking-[0.3em] text-zinc-400 mb-6">Studio Credit</h3>
-          <div className="font-serif text-3xl text-zinc-900 italic">
-            ₹12,500.00
-          </div>
-          <p className="text-[9px] font-sans uppercase tracking-widest text-zinc-400 mt-2">Available for next order</p>
-          <button className="mt-8 text-[10px] font-sans uppercase tracking-widest text-[#ED4064] hover:underline decoration-[#ED4064] underline-offset-8">
-            Apply to Order
-          </button>
-        </section>
+        <div className="p-10 bg-zinc-50/50 border border-zinc-100 space-y-6">
+          <h4 className="text-[10px] font-sans uppercase tracking-[0.3em] text-zinc-400">Primary Address</h4>
+          {profile?.address ? (
+            <p className="text-sm text-zinc-600 leading-relaxed font-sans">{profile.address}</p>
+          ) : (
+            <p className="text-sm text-zinc-400 italic font-sans">No address saved yet.</p>
+          )}
+          <Link href="/profile/settings" className="block text-[10px] font-sans uppercase tracking-widest text-[#ED4064] hover:underline">Edit Address</Link>
+        </div>
+        <div className="p-10 bg-[#ED4064]/5 border border-[#ED4064]/10 space-y-6">
+          <h4 className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#ED4064]">Member Status</h4>
+          <p className="font-serif text-2xl text-zinc-900 italic">Established Since 2026</p>
+          <p className="text-[10px] font-sans uppercase tracking-widest text-zinc-400">WAAFA COUTURE CIRCLE</p>
+        </div>
       </div>
     </div>
   );

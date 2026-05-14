@@ -10,7 +10,7 @@ export default function StoreLayout({
   return (
     <>
       <Header />
-      <main className="pt-[88px] flex-grow min-h-screen">
+      <main className="pt-[76px] flex-grow min-h-screen">
         {children}
       </main>
       <Footer />

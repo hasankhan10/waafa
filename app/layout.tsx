@@ -22,6 +22,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "WAAFA | Digital Couture",
   description: "Elegance in each fabric. Discover our latest collection of handcrafted gowns, where minimal silhouette meets striking vibrant detail.",
+  icons: {
+    icon: "/waafa-logo.jpeg",
+  },
 };
 
 export default function RootLayout({
