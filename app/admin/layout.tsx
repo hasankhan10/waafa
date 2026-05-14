@@ -28,10 +28,10 @@ export default function AdminLayout({
 
   const navLinks = [
     { href: "/admin", label: "Dashboard", icon: "dashboard_customize" },
-    { href: "/admin/products", label: "Products", icon: "inventory_2" },
-    { href: "/admin/collections", label: "Categories", icon: "auto_awesome_motion" },
-    { href: "/admin/orders", label: "Orders", icon: "ink_highlighter" },
-    { href: "/admin/circle", label: "Customers", icon: "loyalty" },
+    { label: "Products", href: "/admin/products", icon: "inventory_2" },
+    { label: "Orders", href: "/admin/orders", icon: "shopping_cart" },
+    { label: "Circle", href: "/admin/circle", icon: "stars" },
+    { label: "Settings", href: "/admin/settings", icon: "settings" },
   ];
 
   return (
