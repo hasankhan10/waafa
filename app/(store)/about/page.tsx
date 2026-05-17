@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
@@ -12,7 +13,9 @@ export default function AboutPage() {
           <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8">
             At WAAFA, we believe that elegance transcends the physical realm. Founded on the principles of impeccable craftsmanship and modern aesthetics, our digital atelier brings haute couture to the digital frontier. Every gown, every stitch, and every silhouette is designed with absolute precision.
           </p>
-          <Button href="/collections" variant="primary">Explore Collections</Button>
+          <Button asChild className="bg-[#ED4064] text-white hover:bg-[#D63056] rounded-none px-8 py-6 uppercase font-sans text-xs tracking-[0.2em]">
+            <Link href="/products">Explore Collections</Link>
+          </Button>
         </div>
         {/* Image Section */}
         <div className="aspect-[4/5] bg-surface-container-low overflow-hidden relative">

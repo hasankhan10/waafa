@@ -1,57 +1,125 @@
+"use client";
+
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
-export default function Footer() {
+interface FooterProps {
+  description?: string;
+  copyright?: string;
+}
+
+export default function Footer({
+  description = "Elegance in each fabric, perfection in every silhouette. Handcrafted digital couture collections designed to redefine modern Indian luxury.",
+  copyright = "© 2026 WAAFA. All rights reserved.",
+}: FooterProps) {
+  const sections = [
+    {
+      title: "Collection",
+      links: [
+        { name: "All Products", href: "/products" },
+        { name: "Categories", href: "/categories" },
+        { name: "New Arrivals", href: "/" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { name: "About Us", href: "/about" },
+        { name: "Philosophy", href: "/about" },
+        { name: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      title: "Info",
+      links: [
+        { name: "Delivery & Returns", href: "/delivery" },
+        { name: "Terms of Service", href: "/terms" },
+        { name: "Privacy Policy", href: "/privacy" },
+      ],
+    },
+  ];
+
+  const socialLinks = [
+    { icon: <FaInstagram className="h-5 w-5" />, href: "https://instagram.com/Waafaindia", label: "Instagram" },
+    { icon: <FaFacebook className="h-5 w-5" />, href: "https://facebook.com/Waafaindia", label: "Facebook" },
+  ];
+
   return (
-    <footer className="relative w-full pt-12 pb-8 px-[5vw] bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+    <footer className="relative w-full py-12 px-[5vw] bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
       <div className="max-w-[1920px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-10">
+        <div className="flex w-full flex-col justify-between gap-12 lg:flex-row lg:items-start lg:text-left">
           
-          {/* Brand Story */}
-          <div className="md:col-span-5 space-y-8">
-            <Link href="/" className="block">
-              <Image 
-                src="/waafa-logo.jpeg" 
-                alt="WAAFA Logo" 
-                width={120} 
-                height={120} 
-                className="object-contain w-auto h-16 rounded-full grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500" 
-              />
-            </Link>
-            <p className="font-serif italic text-xl text-zinc-400 max-w-sm leading-relaxed">
-              "Elegance in each fabric, perfection in every silhouette."
+          {/* Logo & Description */}
+          <div className="flex w-full flex-col justify-between gap-6 lg:items-start lg:max-w-md">
+            <div className="flex items-center gap-3">
+              <Link href="/">
+                <Image
+                  src="/waafa-logo.jpeg"
+                  alt="WAAFA Logo"
+                  width={100}
+                  height={100}
+                  className="object-contain w-auto h-12 rounded-sm"
+                />
+              </Link>
+            </div>
+            <p className="font-serif italic text-lg text-zinc-500 leading-relaxed">
+              "{description}"
             </p>
+            <ul className="flex items-center space-x-6 text-zinc-400">
+              {socialLinks.map((social, idx) => (
+                <li key={idx} className="font-medium hover:text-[#ED4064] transition-colors">
+                  <a href={social.href} aria-label={social.label} target="_blank" rel="noopener noreferrer">
+                    {social.icon}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-          
-          {/* Quick Links */}
-          <div className="md:col-span-7 flex flex-wrap justify-start md:justify-end gap-x-16 gap-y-10">
-            <div className="space-y-6">
-              <h4 className="font-sans text-[10px] uppercase tracking-[0.3em] text-zinc-900 dark:text-white font-semibold">Information</h4>
-              <nav className="flex flex-col gap-4">
-                <Link href="/privacy" className="font-sans text-[11px] uppercase tracking-widest text-zinc-400 hover:text-[#ED4064] transition-colors">Privacy Policy</Link>
-                <Link href="/terms" className="font-sans text-[11px] uppercase tracking-widest text-zinc-400 hover:text-[#ED4064] transition-colors">Terms of Service</Link>
-              </nav>
-            </div>
 
-            <div className="space-y-6">
-              <h4 className="font-sans text-[10px] uppercase tracking-[0.3em] text-zinc-900 dark:text-white font-semibold">Shopping</h4>
-              <nav className="flex flex-col gap-4">
-                <Link href="/delivery" className="font-sans text-[11px] uppercase tracking-widest text-zinc-400 hover:text-[#ED4064] transition-colors">Delivery & Returns</Link>
-                <Link href="/contact" className="font-sans text-[11px] uppercase tracking-widest text-zinc-400 hover:text-[#ED4064] transition-colors">Contact Us</Link>
-              </nav>
-            </div>
+          {/* Links Sections */}
+          <div className="grid w-full gap-8 grid-cols-2 md:grid-cols-3 lg:gap-20 lg:max-w-2xl">
+            {sections.map((section, sectionIdx) => (
+              <div key={sectionIdx} className="space-y-6">
+                <h3 className="font-sans text-xs uppercase tracking-[0.3em] text-zinc-900 dark:text-white font-semibold">
+                  {section.title}
+                </h3>
+                <ul className="space-y-4 text-sm font-medium text-zinc-400">
+                  {section.links.map((link, linkIdx) => (
+                    <li key={linkIdx} className="hover:text-[#ED4064] transition-colors">
+                      <Link href={link.href} className="font-sans tracking-wider uppercase text-xs">
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-12 flex flex-col justify-between gap-6 border-t border-zinc-100 dark:border-zinc-900/50 pt-8 text-xs font-sans tracking-[0.2em] text-zinc-300 md:flex-row md:items-center">
+          <p className="order-2 md:order-1 uppercase">
+            {copyright}
+          </p>
+          <div className="order-1 flex flex-col md:flex-row gap-4 md:items-center">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-zinc-300">
+              Developed and maintained by{" "}
+              <a
+                href="https://stovamedia.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-400 hover:text-[#ED4064] transition-colors font-semibold"
+              >
+                Stova Media
+              </a>
+            </span>
           </div>
         </div>
-        
-        {/* Bottom Bar */}
-        <div className="pt-10 border-t border-zinc-50 dark:border-zinc-900/50 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-zinc-300">
-            © 2026 WAAFA. ALL RIGHTS RESERVED.
-          </p>
-          <p className="font-sans text-[9px] uppercase tracking-[0.3em] text-zinc-300">
-            Developed and maintained by <a href="https://stovamedia.in" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-[#ED4064] transition-colors font-semibold">Stova Media</a>
-          </p>
-        </div>
+
       </div>
     </footer>
   );

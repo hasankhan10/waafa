@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 export default function CollectionsPage() {
   return (
@@ -7,7 +8,9 @@ export default function CollectionsPage() {
       <span className="material-symbols-outlined text-4xl text-primary mb-4">auto_awesome</span>
       <h1 className="font-headline-lg text-headline-lg text-on-surface mb-4">Collections</h1>
       <p className="font-body-lg text-secondary max-w-lg mx-auto mb-8">This experience is currently being curated by our digital artisans. Check back soon for the full unveiling.</p>
-      <Button href="/" variant="secondary">Return Home</Button>
+      <Button asChild variant="secondary" className="rounded-none tracking-widest font-sans uppercase text-xs px-8 py-5">
+        <Link href="/">Return Home</Link>
+      </Button>
     </div>
   );
 }

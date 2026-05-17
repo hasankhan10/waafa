@@ -37,7 +37,7 @@ export default function ContactPage() {
             ></textarea>
           </div>
           <div className="pt-4">
-            <Button variant="primary" className="w-full">SEND MESSAGE</Button>
+            <Button className="w-full bg-[#ED4064] hover:bg-[#D63056] text-white rounded-none py-6 uppercase font-sans text-xs tracking-[0.2em]">SEND MESSAGE</Button>
           </div>
         </form>
       </div>
