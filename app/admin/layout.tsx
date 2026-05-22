@@ -30,7 +30,6 @@ export default function AdminLayout({
     { href: "/admin", label: "Dashboard", icon: "dashboard_customize" },
     { label: "Products", href: "/admin/products", icon: "inventory_2" },
     { label: "Orders", href: "/admin/orders", icon: "shopping_cart" },
-    { label: "Circle", href: "/admin/circle", icon: "stars" },
     { label: "Settings", href: "/admin/settings", icon: "settings" },
   ];
 
@@ -72,12 +71,6 @@ export default function AdminLayout({
 
         {/* Bottom Tab */}
         <div className="mt-4 lg:mt-auto hidden lg:block border-t border-zinc-50">
-          <Link href="/admin/settings" className={`flex items-center gap-4 px-8 py-5 transition-all duration-300 font-sans text-[11px] tracking-widest uppercase ${
-            pathname === "/admin/settings" ? "text-[#ED4064]" : "text-zinc-400 hover:text-zinc-900"
-          }`}>
-            <span className="material-symbols-outlined text-[18px]">tune</span>
-            Settings
-          </Link>
           <button 
             onClick={handleSignOut}
             className="w-full flex items-center gap-4 px-8 py-5 transition-all duration-300 font-sans text-[11px] tracking-widest uppercase text-zinc-400 hover:text-red-500 hover:bg-red-50"

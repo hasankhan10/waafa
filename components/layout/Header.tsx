@@ -22,6 +22,8 @@ import { cn } from "@/lib/utils";
 export default function Header() {
   const [profileHref, setProfileHref] = useState("/login");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState<number>(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const checkUser = async () => {
@@ -39,6 +41,35 @@ export default function Header() {
       }
     };
     checkUser();
+
+    // Cart sync
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+
+    const updateCartCount = () => {
+      const existing = localStorage.getItem("waafa-cart");
+      if (existing) {
+        try {
+          const cart = JSON.parse(existing);
+          if (Array.isArray(cart)) {
+            const count = cart.reduce((sum, item) => sum + (parseInt(item.quantity, 10) || 0), 0);
+            setCartCount(count);
+            return;
+          }
+        } catch {
+          // ignore
+        }
+      }
+      setCartCount(0);
+    };
+
+    updateCartCount();
+    window.addEventListener("storage", updateCartCount);
+    return () => {
+      window.removeEventListener("storage", updateCartCount);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -149,8 +180,11 @@ export default function Header() {
           <Link href="/cart">
             <Button variant="ghost" size="icon" className="hover:bg-zinc-50 rounded-full text-zinc-600 hover:text-[#ED4064] transition-colors relative">
               <ShoppingBag className="h-[22px] w-[22px] font-light" strokeWidth={1.5} />
-              {/* Optional: Add a subtle indicator for items in cart */}
-              {/* <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-[#ED4064]"></span> */}
+              {mounted && cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-[#ED4064] text-[9px] font-semibold text-white flex items-center justify-center animate-in zoom-in-50 duration-300">
+                  {cartCount}
+                </span>
+              )}
             </Button>
           </Link>
         </div>
@@ -161,14 +195,14 @@ export default function Header() {
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<typeof Link>,
+  HTMLAnchorElement,
   React.ComponentPropsWithoutRef<typeof Link> & { title: string }
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
-          ref={ref as any}
+          ref={ref}
           className={cn(
             "group block select-none space-y-1 rounded-sm p-4 leading-none no-underline outline-none transition-all hover:bg-zinc-50 hover:text-zinc-900 focus:bg-zinc-50 focus:text-zinc-900 border border-transparent hover:border-zinc-100",
             className

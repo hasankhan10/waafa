@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 interface FooterProps {
   description?: string;
@@ -65,7 +65,7 @@ export default function Footer({
               </Link>
             </div>
             <p className="font-serif italic text-lg text-zinc-500 leading-relaxed">
-              "{description}"
+              &ldquo;{description}&rdquo;
             </p>
             <ul className="flex items-center space-x-6 text-zinc-400">
               {socialLinks.map((social, idx) => (
