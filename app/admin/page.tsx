@@ -18,7 +18,7 @@ export default function AdminDashboard() {
       // 1. Fetch Total Sales & Order Count
       const { data: ordersData, error: ordersError } = await supabase
         .from('orders')
-        .select('total_amount, status, id, created_at, profiles(full_name)');
+        .select('total_amount, status, id, created_at, shipping_address, profiles(full_name)');
 
       if (ordersData) {
         const total = ordersData.reduce((sum, order) => sum + (order.total_amount || 0), 0);
@@ -28,14 +28,27 @@ export default function AdminDashboard() {
         });
         
         // Map recent orders for the table
-        const formattedOrders = ordersData.slice(0, 5).map(order => ({
-          id: `#WF-${order.id.slice(0, 4).toUpperCase()}`,
-          client: (order.profiles as any)?.full_name || "Unknown Customer",
-          status: order.status === 'delivered' ? 'Delivered' : 
-                  order.status === 'dispatched' ? 'Dispatched' : 
-                  order.status === 'stitching' ? 'In Stitching' : 'Pending',
-          amount: `₹${order.total_amount?.toLocaleString('en-IN')}`
-        }));
+        const formattedOrders = ordersData.slice(0, 5).map(order => {
+          let clientName = "Unknown Customer";
+          if ((order.profiles as any)?.full_name) {
+            clientName = (order.profiles as any).full_name;
+          } else if (order.shipping_address) {
+            const addr = typeof order.shipping_address === 'string' 
+              ? JSON.parse(order.shipping_address) 
+              : order.shipping_address;
+            if (addr && typeof addr === 'object') {
+              clientName = addr.full_name || `${addr.firstName || ""} ${addr.lastName || ""}`.trim() || "Unknown Customer";
+            }
+          }
+          return {
+            id: `#WF-${order.id.slice(0, 4).toUpperCase()}`,
+            client: clientName,
+            status: order.status === 'delivered' ? 'Delivered' : 
+                    order.status === 'dispatched' ? 'Dispatched' : 
+                    order.status === 'stitching' ? 'In Stitching' : 'Pending',
+            amount: `₹${order.total_amount?.toLocaleString('en-IN')}`
+          };
+        });
         setRecentOrders(formattedOrders);
       }
 
