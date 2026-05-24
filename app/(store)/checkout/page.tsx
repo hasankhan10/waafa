@@ -207,18 +207,20 @@ export default function CheckoutPage() {
     let success = false;
 
     try {
-      const { data: insertData, error: insertError } = await supabase
-        .from("orders")
-        .insert([orderInsertData])
-        .select();
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(orderInsertData)
+      });
 
-      if (!insertError) {
+      const result = await response.json();
+      if (response.ok && result.data && result.data[0]) {
         success = true;
-        if (insertData && insertData[0]) {
-          finalOrderId = insertData[0].id;
-        }
+        finalOrderId = result.data[0].id;
       } else {
-        console.error("Order database insertion failed:", insertError.message);
+        console.error("Order server-side database insertion failed:", result.error);
         // Fallback for local demo simulation stability
         success = true;
       }
@@ -226,10 +228,6 @@ export default function CheckoutPage() {
       console.error("Order insertion caught error:", err);
       success = true;
     }
-
-    // Fail-soft flow: If supabase insert failed (e.g. policy block or network timeout), 
-    // we still let the checkout proceed for walkthrough purposes, giving them a mock successful order state
-    success = true; // Hardcode success for demo-loop walkthrough resilience
 
     if (success) {
       // Save last order info locally for the /order-confirm page to render dynamically
