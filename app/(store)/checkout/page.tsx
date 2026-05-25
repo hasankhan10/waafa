@@ -141,6 +141,9 @@ export default function CheckoutPage() {
     if (!address.state) tempErrors.state = "State is required";
     if (!address.pincode) tempErrors.pincode = "Pincode is required";
 
+    if (!contact.email) tempErrors.email = "Email address is required";
+    else if (!/\S+@\S+\.\S+/.test(contact.email)) tempErrors.email = "Invalid email address";
+
     if (!contact.phone) tempErrors.phone = "Mobile number is required";
     else if (contact.phone.replace(/[^\d]/g, "").length < 10) tempErrors.phone = "Invalid mobile number";
 
@@ -183,7 +186,7 @@ export default function CheckoutPage() {
         state: address.state,
         pincode: address.pincode,
         country: address.country,
-        email: user?.email || "",
+        email: contact.email || "",
         phone: contact.phone || "",
         items: cartItems,
         // Prepared structures for payment (Razorpay) and logistics (Delhivery)
@@ -221,12 +224,13 @@ export default function CheckoutPage() {
         finalOrderId = result.data[0].id;
       } else {
         console.error("Order server-side database insertion failed:", result.error);
-        // Fallback for local demo simulation stability
-        success = true;
+        toast.error(`Order Placement Failed: ${result.error || "Unable to save record."}`);
+        success = false;
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Order insertion caught error:", err);
-      success = true;
+      toast.error(`Network Error: ${err.message || "Failed to communicate with server."}`);
+      success = false;
     }
 
     if (success) {
@@ -410,7 +414,19 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="md:col-span-2 space-y-1.5">
+              <div className="space-y-1.5">
+                <label className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold block">Email Address (for order updates)</label>
+                <Input
+                  type="email"
+                  placeholder="e.g. name@example.com"
+                  value={contact.email}
+                  onChange={(e) => setContact(prev => ({ ...prev, email: e.target.value }))}
+                  className={`rounded-none bg-zinc-50 border-zinc-200 px-4 py-3 h-12 text-sm focus:border-zinc-900 focus:bg-white transition-all duration-300 ${errors.email ? "border-red-500 animate-shake" : ""}`}
+                />
+                {errors.email && <p className="text-red-500 text-[10px] tracking-wide font-sans">{errors.email}</p>}
+              </div>
+
+              <div className="space-y-1.5">
                 <label className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold block">Mobile Number (for delivery coordination)</label>
                 <Input
                   type="tel"

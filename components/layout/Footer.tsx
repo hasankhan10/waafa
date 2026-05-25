@@ -67,6 +67,9 @@ export default function Footer({
             <p className="font-serif italic text-lg text-zinc-500 leading-relaxed">
               &ldquo;{description}&rdquo;
             </p>
+            <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-zinc-400">
+              Kolkata, 700104
+            </p>
             <ul className="flex items-center space-x-6 text-zinc-400">
               {socialLinks.map((social, idx) => (
                 <li key={idx} className="font-medium hover:text-[#ED4064] transition-colors">

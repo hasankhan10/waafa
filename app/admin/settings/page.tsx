@@ -41,7 +41,7 @@ const DEFAULT_CONFIG: AtelierConfig = {
   atelierName: "WAAFA Atelier",
   atelierEmail: "studio@waafa.in",
   atelierPhone: "+91 99999 88888",
-  atelierAddress: "Royal Galleria, Mehrauli-Gurgaon Road, New Delhi - 110030",
+  atelierAddress: "Kolkata, 700104",
   instagramUrl: "https://instagram.com/Waafaindia",
   facebookUrl: "https://facebook.com/Waafaindia",
   vipPlatinumThreshold: 300000,

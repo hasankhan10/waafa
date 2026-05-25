@@ -6,8 +6,6 @@ import { toast } from "sonner";
 import {
   Search,
   Filter,
-  ChevronDown,
-  ChevronUp,
   Eye,
   TrendingUp,
   Package,
@@ -49,8 +47,6 @@ interface Order {
 }
 
 const getClientName = (order: Order) => {
-  if (order.full_name) return order.full_name;
-  if (order.profiles?.full_name) return order.profiles.full_name;
   if (order.shipping_address) {
     if (typeof order.shipping_address === "object") {
       const addr = order.shipping_address as any;
@@ -58,23 +54,23 @@ const getClientName = (order: Order) => {
       if (addr.firstName || addr.lastName) return `${addr.firstName || ""} ${addr.lastName || ""}`.trim();
     }
   }
+  if (order.full_name) return order.full_name;
+  if (order.profiles?.full_name) return order.profiles.full_name;
   return "Unknown Customer";
 };
 
 const getEmail = (order: Order) => {
-  if (order.email) return order.email;
   if (order.shipping_address && typeof order.shipping_address === "object") {
-    return (order.shipping_address as any).email || "";
+    return (order.shipping_address as any).email || order.email || "";
   }
-  return "";
+  return order.email || "";
 };
 
 const getPhone = (order: Order) => {
-  if (order.phone) return order.phone;
   if (order.shipping_address && typeof order.shipping_address === "object") {
-    return (order.shipping_address as any).phone || "";
+    return (order.shipping_address as any).phone || order.phone || "";
   }
-  return "";
+  return order.phone || "";
 };
 
 const getAddressString = (order: Order) => {
@@ -109,14 +105,23 @@ const MOCK_ORDERS: Order[] = [
     total_amount: 45000,
     status: "pending",
     created_at: new Date(Date.now() - 3600000 * 2).toISOString(), // 2 hours ago
-    shipping_address: "Flat 402, Signature Towers, Jubilee Hills, Hyderabad, Telangana - 500033, India",
-    email: "priya.sharma@example.com",
-    phone: "+91 98765 43210",
-    full_name: "Priya Sharma",
-    items: [
-      { id: "p1", title: "The Crimson Silk Lehnga", price: 32000, quantity: 1, size: "M", color: "#ED4064" },
-      { id: "p2", title: "Embroidered Organza Dupatta", price: 13000, quantity: 1, size: "FREE SIZE", color: "#FFFFF0" }
-    ]
+    shipping_address: {
+      firstName: "Priya",
+      lastName: "Sharma",
+      full_name: "Priya Sharma",
+      addressLine1: "Flat 402, Signature Towers",
+      addressLine2: "Jubilee Hills",
+      city: "Hyderabad",
+      state: "Telangana",
+      pincode: "500033",
+      country: "in",
+      email: "priya.sharma@example.com",
+      phone: "+91 98765 43210",
+      items: [
+        { id: "p1", title: "The Crimson Silk Lehnga", price: 32000, quantity: 1, size: "M", color: "#ED4064" },
+        { id: "p2", title: "Embroidered Organza Dupatta", price: 13000, quantity: 1, size: "FREE SIZE", color: "#FFFFF0" }
+      ]
+    }
   },
   {
     id: "orders-mock-2",
@@ -124,13 +129,20 @@ const MOCK_ORDERS: Order[] = [
     total_amount: 58000,
     status: "stitching",
     created_at: new Date(Date.now() - 3600000 * 24).toISOString(), // 1 day ago
-    shipping_address: "B-12, Gulmohar Park, New Delhi - 110049, India",
-    email: "ananya.sen@example.com",
-    phone: "+91 99999 88888",
-    full_name: "Ananya Sen",
-    items: [
-      { id: "p3", title: "Midnight Velvet Sherwani", price: 58000, quantity: 1, size: "L", color: "#191970" }
-    ]
+    shipping_address: {
+      firstName: "Ananya",
+      lastName: "Sen",
+      full_name: "Ananya Sen",
+      addressLine1: "B-12, Gulmohar Park",
+      city: "New Delhi",
+      pincode: "110049",
+      country: "in",
+      email: "ananya.sen@example.com",
+      phone: "+91 99999 88888",
+      items: [
+        { id: "p3", title: "Midnight Velvet Sherwani", price: 58000, quantity: 1, size: "L", color: "#191970" }
+      ]
+    }
   },
   {
     id: "orders-mock-3",
@@ -138,13 +150,22 @@ const MOCK_ORDERS: Order[] = [
     total_amount: 27500,
     status: "dispatched",
     created_at: new Date(Date.now() - 3600000 * 48).toISOString(), // 2 days ago
-    shipping_address: "Apt 15, Sea Breeze Apartments, Bandra West, Mumbai, Maharashtra - 400050, India",
-    email: "karan.malhotra@example.com",
-    phone: "+91 98111 22233",
-    full_name: "Karan Malhotra",
-    items: [
-      { id: "p4", title: "Teal Georgette Anarkali", price: 27500, quantity: 1, size: "S", color: "#008080" }
-    ]
+    shipping_address: {
+      firstName: "Karan",
+      lastName: "Malhotra",
+      full_name: "Karan Malhotra",
+      addressLine1: "Apt 15, Sea Breeze Apartments",
+      addressLine2: "Bandra West",
+      city: "Mumbai",
+      state: "Maharashtra",
+      pincode: "400050",
+      country: "in",
+      email: "karan.malhotra@example.com",
+      phone: "+91 98111 22233",
+      items: [
+        { id: "p4", title: "Teal Georgette Anarkali", price: 27500, quantity: 1, size: "S", color: "#008080" }
+      ]
+    }
   },
   {
     id: "orders-mock-4",
@@ -152,15 +173,23 @@ const MOCK_ORDERS: Order[] = [
     total_amount: 89000,
     status: "delivered",
     created_at: new Date(Date.now() - 3600000 * 120).toISOString(), // 5 days ago
-    shipping_address: "House 88, Sector 15-A, Noida, Uttar Pradesh - 201301, India",
-    email: "meera.reddy@example.com",
-    phone: "+91 97777 66655",
-    full_name: "Meera Reddy",
-    items: [
-      { id: "p5", title: "Emerald Banarasi Saree", price: 42000, quantity: 1, size: "FREE SIZE", color: "#008A5E" },
-      { id: "p6", title: "Gold Embroidered Blouse", price: 15000, quantity: 1, size: "M", color: "#D4AF37" },
-      { id: "p7", title: "Atelier Bridal Veil", price: 32000, quantity: 1, size: "FREE SIZE", color: "#FFFFF0" }
-    ]
+    shipping_address: {
+      firstName: "Meera",
+      lastName: "Reddy",
+      full_name: "Meera Reddy",
+      addressLine1: "House 88, Sector 15-A",
+      city: "Noida",
+      state: "Uttar Pradesh",
+      pincode: "201301",
+      country: "in",
+      email: "meera.reddy@example.com",
+      phone: "+91 97777 66655",
+      items: [
+        { id: "p5", title: "Emerald Banarasi Saree", price: 42000, quantity: 1, size: "FREE SIZE", color: "#008A5E" },
+        { id: "p6", title: "Gold Embroidered Blouse", price: 15000, quantity: 1, size: "M", color: "#D4AF37" },
+        { id: "p7", title: "Atelier Bridal Veil", price: 32000, quantity: 1, size: "FREE SIZE", color: "#FFFFF0" }
+      ]
+    }
   }
 ];
 
@@ -169,7 +198,7 @@ export default function AdminOrdersPage() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [isSandboxMode, setIsSandboxMode] = useState(false);
 
@@ -180,34 +209,21 @@ export default function AdminOrdersPage() {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      // Fetch orders from Supabase
-      const { data, error } = await supabase
-        .from("orders")
-        .select(`
-          *,
-          profiles (
-            full_name,
-            address
-          )
-        `)
-        .order("created_at", { ascending: false });
-
-      if (error) {
-        throw error;
+      // Fetch orders from secure server API
+      const res = await fetch("/api/orders");
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.error || "Failed to retrieve orders from database.");
       }
-
-      if (data && data.length > 0) {
-        setOrders(data);
-        setIsSandboxMode(false);
-      } else {
-        // Fallback to high-fidelity mock data if database is empty
-        setOrders(MOCK_ORDERS);
-        setIsSandboxMode(true);
-      }
+      
+      const { data } = await res.json();
+      setOrders(data || []);
+      setIsSandboxMode(false);
     } catch (error: any) {
-      console.warn("Failed to fetch orders from Supabase. Falling back to mock data. Error:", error.message);
-      setOrders(MOCK_ORDERS);
-      setIsSandboxMode(true);
+      console.error("Failed to fetch orders from database:", error.message);
+      toast.error(`Error loading orders: ${error.message}`);
+      setOrders([]);
+      setIsSandboxMode(false);
     } finally {
       setLoading(false);
     }
@@ -216,40 +232,34 @@ export default function AdminOrdersPage() {
   const handleUpdateStatus = async (orderId: string, newStatus: string) => {
     setUpdatingId(orderId);
     try {
-      if (isSandboxMode) {
-        // Local state update for mock data
-        setOrders(prev =>
-          prev.map(order =>
-            order.id === orderId ? { ...order, status: newStatus } : order
-          )
-        );
-        toast.success(`Order status updated to "${newStatus}" (Sandbox Mode)`);
-      } else {
-        // Update in Supabase
-        const { error } = await supabase
-          .from("orders")
-          .update({ status: newStatus })
-          .eq("id", orderId);
+      const res = await fetch("/api/orders", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: orderId, status: newStatus }),
+      });
 
-        if (error) throw error;
-
-        setOrders(prev =>
-          prev.map(order =>
-            order.id === orderId ? { ...order, status: newStatus } : order
-          )
-        );
-        toast.success(`Order status updated to "${newStatus}"`);
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.error || "Failed to update order status on server.");
       }
+
+      setOrders(prev =>
+        prev.map(order =>
+          order.id === orderId ? { ...order, status: newStatus } : order
+        )
+      );
+      
+      // Update selectedOrder if it is currently open in modal
+      setSelectedOrder(prev => prev && prev.id === orderId ? { ...prev, status: newStatus } : prev);
+      
+      toast.success(`Order status updated to "${newStatus}"`);
     } catch (error: any) {
       toast.error(`Failed to update status: ${error.message}`);
     } finally {
       setUpdatingId(null);
     }
-  };
-
-  // Toggle expand row to see full items & delivery details
-  const toggleExpand = (id: string) => {
-    setExpandedOrderId(prev => (prev === id ? null : id));
   };
 
   // Filter orders by active status tab and search query
@@ -285,19 +295,19 @@ export default function AdminOrdersPage() {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "pending":
-        return "bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-900/30";
+        return "bg-amber-50 text-black border-amber-100 dark:bg-zinc-950 dark:text-white dark:border-amber-900/30";
       case "confirmed":
-        return "bg-teal-50 text-teal-700 border-teal-100 dark:bg-teal-950/20 dark:text-teal-400 dark:border-teal-900/30";
+        return "bg-teal-50 text-black border-teal-100 dark:bg-zinc-950 dark:text-white dark:border-teal-900/30";
       case "stitching":
-        return "bg-orange-50 text-orange-700 border-orange-100 dark:bg-orange-950/20 dark:text-orange-400 dark:border-orange-900/30";
+        return "bg-orange-50 text-black border-orange-100 dark:bg-zinc-950 dark:text-white dark:border-orange-900/30";
       case "dispatched":
-        return "bg-sky-50 text-sky-700 border-sky-100 dark:bg-sky-950/20 dark:text-sky-400 dark:border-sky-900/30";
+        return "bg-sky-50 text-black border-sky-100 dark:bg-zinc-950 dark:text-white dark:border-zinc-900/30";
       case "delivered":
-        return "bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-950/20 dark:text-emerald-400 dark:border-emerald-900/30";
+        return "bg-emerald-50 text-black border-emerald-100 dark:bg-zinc-950 dark:text-white dark:border-emerald-900/30";
       case "rejected":
-        return "bg-rose-50 text-rose-700 border-rose-100 dark:bg-rose-950/20 dark:text-rose-400 dark:border-rose-900/30";
+        return "bg-rose-50 text-black border-rose-100 dark:bg-zinc-950 dark:text-white dark:border-rose-900/30";
       default:
-        return "bg-zinc-50 text-zinc-600 border-zinc-100 dark:bg-zinc-900 dark:text-zinc-400 dark:border-zinc-800";
+        return "bg-zinc-50 text-black border-zinc-100 dark:bg-zinc-950 dark:text-white dark:border-zinc-800";
     }
   };
 
@@ -410,21 +420,17 @@ export default function AdminOrdersPage() {
               <thead>
                 <tr className="bg-zinc-50 border-b border-zinc-100">
                   <th className="p-5 text-[10px] font-sans uppercase tracking-widest text-zinc-400 w-[15%]">Order ID</th>
-                  <th className="p-5 text-[10px] font-sans uppercase tracking-widest text-zinc-400 w-[20%]">Customer</th>
+                  <th className="p-5 text-[10px] font-sans uppercase tracking-widest text-zinc-400 w-[25%]">Customer</th>
                   <th className="p-5 text-[10px] font-sans uppercase tracking-widest text-zinc-400 w-[15%]">Date</th>
                   <th className="p-5 text-[10px] font-sans uppercase tracking-widest text-zinc-400 w-[20%]">Status</th>
                   <th className="p-5 text-[10px] font-sans uppercase tracking-widest text-zinc-400 w-[15%] text-right">Amount</th>
-                  <th className="p-5 w-[15%]"></th>
+                  <th className="p-5 w-[10%]"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-50">
                 {filteredOrders.map((order) => {
-                  const isExpanded = expandedOrderId === order.id;
                   const clientName = getClientName(order);
                   const clientEmail = getEmail(order);
-                  const clientPhone = getPhone(order);
-                  const addressStr = getAddressString(order);
-                  const orderItems = getOrderItems(order);
                   const orderDate = new Date(order.created_at).toLocaleDateString("en-IN", {
                     day: "numeric",
                     month: "short",
@@ -432,206 +438,51 @@ export default function AdminOrdersPage() {
                   });
 
                   return (
-                    <React.Fragment key={order.id}>
-                      <tr
-                        className={`hover:bg-zinc-50/50 transition-colors cursor-pointer group ${isExpanded ? "bg-zinc-50/30" : ""}`}
-                        onClick={() => toggleExpand(order.id)}
-                      >
-                        <td className="p-5 text-xs font-sans text-zinc-500 font-medium group-hover:text-[#ED4064] transition-colors">
-                          {formatOrderId(order.id)}
-                        </td>
-                        <td className="p-5">
-                          <div className="font-serif text-sm text-zinc-900 font-medium">{clientName}</div>
-                          <div className="text-[10px] text-zinc-400 font-sans tracking-wide mt-0.5">{clientEmail || "No email provided"}</div>
-                        </td>
-                        <td className="p-5 text-xs font-sans text-zinc-500">
-                          {orderDate}
-                        </td>
-                        <td className="p-5" onClick={(e) => e.stopPropagation()}>
-                          <div className="flex items-center gap-2">
-                            <select
-                              value={order.status}
-                              disabled={updatingId === order.id}
-                              onChange={(e) => handleUpdateStatus(order.id, e.target.value)}
-                              className={`text-[9px] font-sans uppercase tracking-widest px-3 py-1.5 border rounded-none outline-none font-semibold cursor-pointer ${getStatusColor(order.status)}`}
-                            >
-                              <option value="pending">Pending</option>
-                              <option value="confirmed">Confirmed</option>
-                              <option value="stitching">Stitching</option>
-                              <option value="dispatched">Dispatched</option>
-                              <option value="delivered">Delivered</option>
-                              <option value="rejected">Rejected</option>
-                            </select>
-                          </div>
-                        </td>
-                        <td className="p-5 text-sm font-sans text-zinc-900 text-right font-medium">
-                          ₹{order.total_amount?.toLocaleString("en-IN")}
-                        </td>
-                        <td className="p-5 text-right">
-                          <button className="text-zinc-400 group-hover:text-zinc-900 transition-colors p-1">
-                            {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                          </button>
-                        </td>
-                      </tr>
-                      {isExpanded && (
-                        <tr className="bg-zinc-50/20">
-                          <td colSpan={6} className="p-8 border-t border-zinc-50">
-                            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 animate-in fade-in duration-300">
-                              {/* Order Items */}
-                              <div className="md:col-span-7 space-y-4">
-                                <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-semibold flex items-center gap-2">
-                                  <Package className="h-3.5 w-3.5" /> Ordered Items
-                                </h4>
-                                <div className="space-y-3 bg-white border border-zinc-100 p-5">
-                                  {orderItems && orderItems.length > 0 ? (
-                                    orderItems.map((item, index) => (
-                                      <div key={index} className="flex justify-between items-center border-b border-zinc-50 pb-3 last:border-b-0 last:pb-0">
-                                        <div className="space-y-1">
-                                          <div className="text-xs font-serif text-zinc-900 font-medium">{item.title}</div>
-                                          <div className="flex gap-4 text-[9px] font-sans uppercase tracking-widest text-zinc-400">
-                                            <span>Size: {item.size || "Standard"}</span>
-                                            {item.color && (
-                                              <span className="flex items-center gap-1">
-                                                Color:
-                                                <span className="w-2.5 h-2.5 rounded-full border border-black/5" style={{ backgroundColor: item.color }} />
-                                              </span>
-                                            )}
-                                          </div>
-                                        </div>
-                                        <div className="text-right">
-                                          <div className="text-xs font-sans text-zinc-500 font-medium">{item.quantity} x ₹{Number(item.price).toLocaleString("en-IN")}</div>
-                                          <div className="text-xs font-sans text-zinc-900 font-semibold mt-0.5">
-                                            ₹{(Number(item.quantity) * Number(item.price)).toLocaleString("en-IN")}
-                                          </div>
-                                        </div>
-                                      </div>
-                                    ))
-                                  ) : (
-                                    <div className="text-xs text-zinc-400 font-sans italic">No items details found. Core purchase amount matches ₹{order.total_amount?.toLocaleString("en-IN")}.</div>
-                                  )}
-                                </div>
-                              </div>
-
-                              {/* Delivery, Customer Info & Integrations */}
-                              <div className="md:col-span-5 space-y-6">
-                                {/* Confirm / Reject Actions (Only if Pending) */}
-                                {order.status === "pending" && (
-                                  <div className="bg-white border border-zinc-100 p-5 space-y-3.5 shadow-sm">
-                                    <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-bold">
-                                      Fulfillment Approval
-                                    </h4>
-                                    <p className="text-[10px] text-zinc-400 font-sans leading-relaxed">
-                                      Review client sizing and fabric stock before approving this couture commission.
-                                    </p>
-                                    <div className="flex gap-2.5 pt-1">
-                                      <button
-                                        onClick={() => handleUpdateStatus(order.id, "confirmed")}
-                                        disabled={updatingId === order.id}
-                                        className="flex-1 bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 py-2.5 text-[9px] font-semibold font-sans tracking-widest uppercase transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
-                                      >
-                                        <CheckCircle className="h-3.5 w-3.5" /> Confirm
-                                      </button>
-                                      <button
-                                        onClick={() => handleUpdateStatus(order.id, "rejected")}
-                                        disabled={updatingId === order.id}
-                                        className="flex-1 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 py-2.5 text-[9px] font-semibold font-sans tracking-widest uppercase transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
-                                      >
-                                        <X className="h-3.5 w-3.5" /> Reject
-                                      </button>
-                                    </div>
-                                  </div>
-                                )}
-
-                                <div className="space-y-4">
-                                  <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-semibold flex items-center gap-2">
-                                    <MapPin className="h-3.5 w-3.5" /> Shipping Address
-                                  </h4>
-                                  <div className="bg-white border border-zinc-100 p-5 text-xs text-zinc-600 leading-relaxed font-sans shadow-sm">
-                                    <p className="font-semibold text-zinc-800 mb-1">{clientName}</p>
-                                    <p>{addressStr}</p>
-                                  </div>
-                                </div>
-
-                                <div className="space-y-4">
-                                  <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-semibold flex items-center gap-2">
-                                    Contact Details
-                                  </h4>
-                                  <div className="bg-white border border-zinc-100 p-5 space-y-3 shadow-sm">
-                                    <div className="flex items-center gap-3 text-xs text-zinc-600">
-                                      <Mail className="h-3.5 w-3.5 text-zinc-400" />
-                                      <span className="font-sans">{clientEmail || "No email on record"}</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-xs text-zinc-600">
-                                      <Phone className="h-3.5 w-3.5 text-zinc-400" />
-                                      <span className="font-sans">{clientPhone || "No phone on record"}</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-xs text-zinc-600">
-                                      <Calendar className="h-3.5 w-3.5 text-zinc-400" />
-                                      <span className="font-sans">Placed: {new Date(order.created_at).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}</span>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                {/* Logistics (Delhivery) & Payments (Razorpay) Preparation Blocks */}
-                                <div className="space-y-4">
-                                  <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-semibold">
-                                    Integration & Logistics (Delhivery / Razorpay)
-                                  </h4>
-                                  <div className="bg-white border border-zinc-100 p-5 space-y-4 shadow-sm text-xs font-sans">
-                                    <div className="flex justify-between items-start border-b border-zinc-50 pb-3">
-                                      <div>
-                                        <div className="text-[9px] uppercase tracking-widest text-zinc-400">Razorpay Payment</div>
-                                        <div className="font-mono text-[10px] text-zinc-600 mt-1">
-                                          {order.shipping_address?.razorpay?.order_id || `rzp_live_${order.id.slice(0, 8)}`}
-                                        </div>
-                                      </div>
-                                      <span className={`text-[8px] font-sans uppercase tracking-widest px-2 py-0.5 border rounded-none font-bold ${order.status === "rejected" ? "bg-red-50 text-red-600 border-red-100" :
-                                          order.status === "pending" ? "bg-amber-50 text-amber-600 border-amber-100" :
-                                            "bg-green-50 text-green-600 border-green-100"
-                                        }`}>
-                                        {order.status === "rejected" ? "Refunded" : order.status === "pending" ? "Authorized" : "Captured"}
-                                      </span>
-                                    </div>
-
-                                    <div className="flex justify-between items-start">
-                                      <div>
-                                        <div className="text-[9px] uppercase tracking-widest text-zinc-400">Delhivery Airway Bill (AWB)</div>
-                                        <div className="font-mono text-[10px] text-zinc-600 mt-1">
-                                          {order.shipping_address?.delhivery?.waybill || (
-                                            order.status === "dispatched" || order.status === "delivered" ? `DEL-${order.id.slice(0, 6).toUpperCase()}` : "Awaiting Dispatch Confirmation"
-                                          )}
-                                        </div>
-                                        <div className="text-[8px] text-zinc-400 mt-1">
-                                          Pkg: {order.shipping_address?.delhivery?.weight_grams || 650}g | Dimensions: {order.shipping_address?.delhivery?.dimensions || "32x24x6"} cm
-                                        </div>
-                                      </div>
-                                      <span className={`text-[8px] font-sans uppercase tracking-widest px-2 py-0.5 border rounded-none font-bold ${order.status === "delivered" ? "bg-green-50 text-green-600 border-green-100" :
-                                          order.status === "dispatched" ? "bg-blue-50 text-blue-600 border-blue-100" :
-                                            "bg-zinc-50 text-zinc-400 border-zinc-100"
-                                        }`}>
-                                        {order.status === "delivered" ? "Delivered" : order.status === "dispatched" ? "In Transit" : "Unmanifested"}
-                                      </span>
-                                    </div>
-
-                                    {order.status === "confirmed" && (
-                                      <button
-                                        onClick={async () => {
-                                          await handleUpdateStatus(order.id, "dispatched");
-                                          toast.success(`Delhivery shipment manifest created. Airway Bill (AWB) DEL-${order.id.slice(0, 6).toUpperCase()} generated!`);
-                                        }}
-                                        className="w-full bg-zinc-900 hover:bg-zinc-800 text-white py-2 text-[9px] font-sans font-semibold tracking-widest uppercase transition-all flex items-center justify-center gap-1.5"
-                                      >
-                                        <Truck className="h-3.5 w-3.5" /> Manifest Delhivery Shipment
-                                      </button>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      )}
-                    </React.Fragment>
+                    <tr
+                      key={order.id}
+                      className="hover:bg-zinc-50/50 transition-colors cursor-pointer group"
+                      onClick={() => setSelectedOrder(order)}
+                    >
+                      <td className="p-5 text-xs font-sans text-zinc-500 font-medium group-hover:text-[#ED4064] transition-colors">
+                        {formatOrderId(order.id)}
+                      </td>
+                      <td className="p-5">
+                        <div className="font-serif text-sm text-zinc-900 font-medium">{clientName}</div>
+                        <div className="text-[10px] text-zinc-400 font-sans tracking-wide mt-0.5">{clientEmail || "No email provided"}</div>
+                      </td>
+                      <td className="p-5 text-xs font-sans text-zinc-500">
+                        {orderDate}
+                      </td>
+                      <td className="p-5" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex items-center gap-2">
+                          <select
+                            value={order.status}
+                            disabled={updatingId === order.id}
+                            onChange={(e) => handleUpdateStatus(order.id, e.target.value)}
+                            className={`text-[9px] font-sans uppercase tracking-widest px-3 py-1.5 border rounded-none outline-none font-semibold cursor-pointer text-black ${getStatusColor(order.status)}`}
+                          >
+                            <option value="pending" className="text-black bg-white">Pending</option>
+                            <option value="confirmed" className="text-black bg-white">Confirmed</option>
+                            <option value="stitching" className="text-black bg-white">Stitching</option>
+                            <option value="dispatched" className="text-black bg-white">Dispatched</option>
+                            <option value="delivered" className="text-black bg-white">Delivered</option>
+                            <option value="rejected" className="text-black bg-white">Rejected</option>
+                          </select>
+                        </div>
+                      </td>
+                      <td className="p-5 text-sm font-sans text-zinc-900 text-right font-medium">
+                        ₹{order.total_amount?.toLocaleString("en-IN")}
+                      </td>
+                      <td className="p-5 text-right" onClick={(e) => e.stopPropagation()}>
+                        <button 
+                          onClick={() => setSelectedOrder(order)}
+                          className="text-zinc-400 hover:text-[#ED4064] transition-colors p-2.5 rounded-full hover:bg-zinc-50 active:scale-95"
+                          title="View Details"
+                        >
+                          <Eye className="h-4.5 w-4.5" />
+                        </button>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>
@@ -639,6 +490,226 @@ export default function AdminOrdersPage() {
           )}
         </div>
       </div>
+
+      {/* Floating Bespoke Details Modal (Centered Card) */}
+      {selectedOrder && (() => {
+        const clientName = getClientName(selectedOrder);
+        const clientEmail = getEmail(selectedOrder);
+        const clientPhone = getPhone(selectedOrder);
+        const addressStr = getAddressString(selectedOrder);
+        const orderItems = getOrderItems(selectedOrder);
+        const orderDateStr = new Date(selectedOrder.created_at).toLocaleDateString("en-IN", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true
+        });
+
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/45 backdrop-blur-sm animate-in fade-in duration-300">
+            <div className="bg-white border border-zinc-100 shadow-2xl rounded-none w-full max-w-5xl max-h-[90vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-300">
+              
+              {/* Modal Header */}
+              <div className="flex justify-between items-center p-6 border-b border-zinc-100 bg-zinc-50/50">
+                <div>
+                  <h3 className="font-serif text-2xl text-zinc-900 italic">Order details</h3>
+                  <p className="font-sans text-[9px] uppercase tracking-widest text-[#ED4064] mt-1 font-bold">
+                    {formatOrderId(selectedOrder.id)} &bull; Placed on {orderDateStr}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedOrder(null)}
+                  className="text-zinc-400 hover:text-zinc-950 p-2 transition-all hover:bg-zinc-100"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-8 overflow-y-auto space-y-8 flex-grow">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                  {/* Left Column: Items details */}
+                  <div className="lg:col-span-7 space-y-6">
+                    <div className="space-y-4">
+                      <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-semibold flex items-center gap-2">
+                        <Package className="h-3.5 w-3.5" /> Ordered Items
+                      </h4>
+                      <div className="space-y-3 bg-white border border-zinc-100 p-5">
+                        {orderItems && orderItems.length > 0 ? (
+                          orderItems.map((item, index) => (
+                            <div key={index} className="flex justify-between items-center border-b border-zinc-50 pb-3 last:border-b-0 last:pb-0">
+                              <div className="space-y-1">
+                                <div className="text-xs font-serif text-zinc-900 font-medium">{item.title}</div>
+                                <div className="flex gap-4 text-[9px] font-sans uppercase tracking-widest text-zinc-400">
+                                  <span>Size: {item.size || "Standard"}</span>
+                                  {item.color && (
+                                    <span className="flex items-center gap-1">
+                                      Color:
+                                      <span className="w-2.5 h-2.5 rounded-full border border-black/5" style={{ backgroundColor: item.color }} />
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="text-right">
+                                <div className="text-xs font-sans text-zinc-500 font-medium">{item.quantity} x ₹{Number(item.price).toLocaleString("en-IN")}</div>
+                                <div className="text-xs font-sans text-zinc-900 font-semibold mt-0.5">
+                                  ₹{(Number(item.quantity) * Number(item.price)).toLocaleString("en-IN")}
+                                </div>
+                              </div>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="text-xs text-zinc-400 font-sans italic">No items details found. Core purchase amount matches ₹{selectedOrder.total_amount?.toLocaleString("en-IN")}.</div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Quick status controller inside modal */}
+                    <div className="bg-zinc-50 border border-zinc-100 p-5 space-y-4">
+                      <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-zinc-400 font-semibold">Update Fulfill Status</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {["pending", "confirmed", "stitching", "dispatched", "delivered", "rejected"].map((status) => (
+                          <button
+                            key={status}
+                            disabled={updatingId === selectedOrder.id}
+                            onClick={() => handleUpdateStatus(selectedOrder.id, status)}
+                            className={`px-4 py-2 text-[9px] uppercase tracking-widest font-semibold border transition-all duration-300 ${
+                              selectedOrder.status === status
+                                ? "bg-zinc-950 text-white border-zinc-950"
+                                : "bg-white text-zinc-500 border-zinc-200 hover:border-zinc-900"
+                            }`}
+                          >
+                            {status}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Customer details & integrations */}
+                  <div className="lg:col-span-5 space-y-6">
+                    {/* Confirm / Reject Actions (Only if Pending) */}
+                    {selectedOrder.status === "pending" && (
+                      <div className="bg-white border border-zinc-100 p-5 space-y-3.5 shadow-sm">
+                        <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-bold">
+                          Fulfillment Approval
+                        </h4>
+                        <p className="text-[10px] text-zinc-400 font-sans leading-relaxed">
+                          Review client sizing and fabric stock before approving this couture commission.
+                        </p>
+                        <div className="flex gap-2.5 pt-1">
+                          <button
+                            onClick={() => handleUpdateStatus(selectedOrder.id, "confirmed")}
+                            disabled={updatingId === selectedOrder.id}
+                            className="flex-1 bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 py-2.5 text-[9px] font-semibold font-sans tracking-widest uppercase transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
+                          >
+                            <CheckCircle className="h-3.5 w-3.5" /> Confirm
+                          </button>
+                          <button
+                            onClick={() => handleUpdateStatus(selectedOrder.id, "rejected")}
+                            disabled={updatingId === selectedOrder.id}
+                            className="flex-1 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 py-2.5 text-[9px] font-semibold font-sans tracking-widest uppercase transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
+                          >
+                            <X className="h-3.5 w-3.5" /> Reject
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="space-y-4">
+                      <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-semibold flex items-center gap-2">
+                        <MapPin className="h-3.5 w-3.5" /> Shipping Address
+                      </h4>
+                      <div className="bg-white border border-zinc-100 p-5 text-xs text-zinc-600 leading-relaxed font-sans shadow-sm">
+                        <p className="font-semibold text-zinc-800 mb-1">{clientName}</p>
+                        <p>{addressStr}</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-semibold flex items-center gap-2">
+                        Contact Details
+                      </h4>
+                      <div className="bg-white border border-zinc-100 p-5 space-y-3 shadow-sm">
+                        <div className="flex items-center gap-3 text-xs text-zinc-600">
+                          <Mail className="h-3.5 w-3.5 text-zinc-400" />
+                          <span className="font-sans">{clientEmail || "No email on record"}</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-xs text-zinc-600">
+                          <Phone className="h-3.5 w-3.5 text-zinc-400" />
+                          <span className="font-sans">{clientPhone || "No phone on record"}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Logistics & Payments */}
+                    <div className="space-y-4">
+                      <h4 className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#ED4064] font-semibold">
+                        Integration & Logistics (Delhivery / Razorpay)
+                      </h4>
+                      <div className="bg-white border border-zinc-100 p-5 space-y-4 shadow-sm text-xs font-sans">
+                        <div className="flex justify-between items-start border-b border-zinc-50 pb-3">
+                          <div>
+                            <div className="text-[9px] uppercase tracking-widest text-zinc-400">Razorpay Payment</div>
+                            <div className="font-mono text-[10px] text-zinc-600 mt-1">
+                              {selectedOrder.shipping_address?.razorpay?.order_id || `rzp_live_${selectedOrder.id.slice(0, 8)}`}
+                            </div>
+                          </div>
+                          <span className="text-[8px] font-sans uppercase tracking-widest px-2 py-0.5 border rounded-none font-bold bg-green-50 text-green-600 border-green-100">
+                            {selectedOrder.status === "rejected" ? "Refunded" : selectedOrder.status === "pending" ? "Authorized" : "Captured"}
+                          </span>
+                        </div>
+
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <div className="text-[9px] uppercase tracking-widest text-zinc-400">Delhivery Airway Bill (AWB)</div>
+                            <div className="font-mono text-[10px] text-zinc-600 mt-1">
+                              {selectedOrder.shipping_address?.delhivery?.waybill || (
+                                selectedOrder.status === "dispatched" || selectedOrder.status === "delivered" ? `DEL-${selectedOrder.id.slice(0, 6).toUpperCase()}` : "Awaiting Dispatch Confirmation"
+                              )}
+                            </div>
+                          </div>
+                          <span className={`text-[8px] font-sans uppercase tracking-widest px-2 py-0.5 border rounded-none font-bold ${selectedOrder.status === "delivered" ? "bg-green-50 text-green-600 border-green-100" :
+                              selectedOrder.status === "dispatched" ? "bg-blue-50 text-blue-600 border-blue-100" :
+                                "bg-zinc-50 text-zinc-400 border-zinc-100"
+                            }`}>
+                            {selectedOrder.status === "delivered" ? "Delivered" : selectedOrder.status === "dispatched" ? "In Transit" : "Unmanifested"}
+                          </span>
+                        </div>
+
+                        {selectedOrder.status === "confirmed" && (
+                          <button
+                            onClick={async () => {
+                              await handleUpdateStatus(selectedOrder.id, "dispatched");
+                              toast.success(`Delhivery shipment manifest created. Airway Bill (AWB) DEL-${selectedOrder.id.slice(0, 6).toUpperCase()} generated!`);
+                            }}
+                            className="w-full bg-zinc-900 hover:bg-zinc-800 text-white py-2.5 text-[9px] font-sans font-semibold tracking-widest uppercase transition-all flex items-center justify-center gap-1.5"
+                          >
+                            <Truck className="h-3.5 w-3.5" /> Manifest Delhivery Shipment
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="p-4 bg-zinc-50 border-t border-zinc-100 flex justify-end gap-3 text-xs font-sans uppercase tracking-widest font-semibold">
+                <button
+                  onClick={() => setSelectedOrder(null)}
+                  className="px-6 py-2.5 bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:border-zinc-400 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

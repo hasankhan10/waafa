@@ -15,44 +15,48 @@ export default function AdminDashboard() {
     async function fetchStats() {
       setLoading(true);
       
-      // 1. Fetch Total Sales & Order Count
-      const { data: ordersData, error: ordersError } = await supabase
-        .from('orders')
-        .select('total_amount, status, id, created_at, shipping_address, profiles(full_name)');
+      try {
+        const res = await fetch("/api/orders");
+        if (!res.ok) throw new Error("Failed to fetch dashboard stats");
+        const { data: ordersData } = await res.json();
 
-      if (ordersData) {
-        const total = ordersData.reduce((sum, order) => sum + (order.total_amount || 0), 0);
-        setStats({
-          totalSales: total,
-          newOrders: ordersData.length,
-        });
-        
-        // Map recent orders for the table
-        const formattedOrders = ordersData.slice(0, 5).map(order => {
-          let clientName = "Unknown Customer";
-          if ((order.profiles as any)?.full_name) {
-            clientName = (order.profiles as any).full_name;
-          } else if (order.shipping_address) {
-            const addr = typeof order.shipping_address === 'string' 
-              ? JSON.parse(order.shipping_address) 
-              : order.shipping_address;
-            if (addr && typeof addr === 'object') {
-              clientName = addr.full_name || `${addr.firstName || ""} ${addr.lastName || ""}`.trim() || "Unknown Customer";
+        if (ordersData) {
+          const total = ordersData.reduce((sum: number, order: any) => sum + (order.total_amount || 0), 0);
+          setStats({
+            totalSales: total,
+            newOrders: ordersData.length,
+          });
+          
+          // Map recent orders for the table
+          const formattedOrders = ordersData.slice(0, 5).map((order: any) => {
+            let clientName = "Unknown Customer";
+            if (order.shipping_address) {
+              const addr = typeof order.shipping_address === 'string' 
+                ? JSON.parse(order.shipping_address) 
+                : order.shipping_address;
+              if (addr && typeof addr === 'object') {
+                clientName = addr.full_name || `${addr.firstName || ""} ${addr.lastName || ""}`.trim() || "Unknown Customer";
+              }
             }
-          }
-          return {
-            id: `#WF-${order.id.slice(0, 4).toUpperCase()}`,
-            client: clientName,
-            status: order.status === 'delivered' ? 'Delivered' : 
-                    order.status === 'dispatched' ? 'Dispatched' : 
-                    order.status === 'stitching' ? 'In Stitching' : 'Pending',
-            amount: `₹${order.total_amount?.toLocaleString('en-IN')}`
-          };
-        });
-        setRecentOrders(formattedOrders);
+            if (clientName === "Unknown Customer" && order.profiles?.full_name) {
+              clientName = order.profiles.full_name;
+            }
+            return {
+              id: `#WF-${order.id.slice(0, 4).toUpperCase()}`,
+              client: clientName,
+              status: order.status === 'delivered' ? 'Delivered' : 
+                      order.status === 'dispatched' ? 'Dispatched' : 
+                      order.status === 'stitching' ? 'In Stitching' : 'Pending',
+              amount: `₹${order.total_amount?.toLocaleString('en-IN')}`
+            };
+          });
+          setRecentOrders(formattedOrders);
+        }
+      } catch (err: any) {
+        console.error("Dashboard fetch error:", err.message);
+      } finally {
+        setLoading(false);
       }
-
-      setLoading(false);
     }
 
     fetchStats();
